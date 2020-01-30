@@ -1,0 +1,783 @@
+trip data/fhv_tripdata_2015-01.csv
+
+- 81.8 MB	
+trip data/fhv_tripdata_2015-02.csv
+
+- 93.3 MB	
+trip data/fhv_tripdata_2015-03.csv
+
+- 97.5 MB	
+trip data/fhv_tripdata_2015-04.csv
+
+- 115.6 MB	
+trip data/fhv_tripdata_2015-05.csv
+
+- 127.3 MB	
+trip data/fhv_tripdata_2015-06.csv
+
+- 126.1 MB	
+trip data/fhv_tripdata_2015-07.csv
+
+- 130.8 MB	
+trip data/fhv_tripdata_2015-08.csv
+
+- 156.7 MB	
+trip data/fhv_tripdata_2015-09.csv
+
+- 196.1 MB	
+trip data/fhv_tripdata_2015-10.csv
+
+- 254.8 MB	
+trip data/fhv_tripdata_2015-11.csv
+
+- 247.2 MB	
+trip data/fhv_tripdata_2015-12.csv
+
+- 259.4 MB	
+trip data/fhv_tripdata_2016-01.csv
+
+- 256.9 MB	
+trip data/fhv_tripdata_2016-02.csv
+
+- 279.2 MB	
+trip data/fhv_tripdata_2016-03.csv
+
+- 285.8 MB	
+trip data/fhv_tripdata_2016-04.csv
+
+- 300.9 MB	
+trip data/fhv_tripdata_2016-05.csv
+
+- 318.9 MB	
+trip data/fhv_tripdata_2016-06.csv
+
+- 319.2 MB	
+trip data/fhv_tripdata_2016-07.csv
+
+- 327.1 MB	
+trip data/fhv_tripdata_2016-08.csv
+
+- 332.6 MB	
+trip data/fhv_tripdata_2016-09.csv
+
+- 347.5 MB	
+trip data/fhv_tripdata_2016-10.csv
+
+- 374.8 MB	
+trip data/fhv_tripdata_2016-11.csv
+
+- 368.2 MB	
+trip data/fhv_tripdata_2016-12.csv
+
+- 410.2 MB	
+trip data/fhv_tripdata_2017-01.csv
+
+- 429.1 MB	
+trip data/fhv_tripdata_2017-02.csv
+
+- 417.5 MB	
+trip data/fhv_tripdata_2017-03.csv
+
+- 493.5 MB	
+trip data/fhv_tripdata_2017-04.csv
+
+- 464.1 MB	
+trip data/fhv_tripdata_2017-05.csv
+
+- 485.6 MB	
+trip data/fhv_tripdata_2017-06.csv
+
+- 797.6 MB	
+trip data/fhv_tripdata_2017-07.csv
+
+- 1011.2 MB	
+trip data/fhv_tripdata_2017-08.csv
+
+- 1.0 GB	
+trip data/fhv_tripdata_2017-09.csv
+
+- 1.0 GB	
+trip data/fhv_tripdata_2017-10.csv
+
+- 1.1 GB	
+trip data/fhv_tripdata_2017-11.csv
+
+- 1.1 GB	
+trip data/fhv_tripdata_2017-12.csv
+
+- 1.3 GB	
+trip data/fhv_tripdata_2018-01.csv
+
+- 1.3 GB	
+trip data/fhv_tripdata_2018-02.csv
+
+- 1.3 GB	
+trip data/fhv_tripdata_2018-03.csv
+
+- 1.5 GB	
+trip data/fhv_tripdata_2018-04.csv
+
+- 1.4 GB	
+trip data/fhv_tripdata_2018-05.csv
+
+- 1.4 GB	
+trip data/fhv_tripdata_2018-06.csv
+
+- 1.4 GB	
+trip data/fhv_tripdata_2018-07.csv
+
+- 1.4 GB	
+trip data/fhv_tripdata_2018-08.csv
+
+- 1.5 GB	
+trip data/fhv_tripdata_2018-09.csv
+
+- 1.5 GB	
+trip data/fhv_tripdata_2018-10.csv
+
+- 1.5 GB	
+trip data/fhv_tripdata_2018-11.csv
+
+- 1.5 GB	
+trip data/fhv_tripdata_2018-12.csv
+
+- 1.6 GB	
+trip data/fhv_tripdata_2019-01.csv
+
+- 1.2 GB	
+trip data/fhv_tripdata_2019-02.csv
+
+- 92.6 MB	
+trip data/fhv_tripdata_2019-03.csv
+
+- 72.2 MB	
+trip data/fhv_tripdata_2019-04.csv
+
+- 103.5 MB	
+trip data/fhv_tripdata_2019-05.csv
+
+- 110.7 MB	
+trip data/fhv_tripdata_2019-06.csv
+
+- 106.8 MB	
+trip data/fhv_tripdata_2019-07.csv
+
+- 103.5 MB	
+trip data/fhv_tripdata_2019-08.csv
+
+- 99.2 MB	
+trip data/fhv_tripdata_2019-09.csv
+
+- 56.1 MB	
+trip data/fhv_tripdata_2019-10.csv
+
+- 98.0 MB	
+trip data/fhv_tripdata_2019-11.csv
+
+- 88.5 MB	
+trip data/fhvhv_tripdata_2019-02.csv
+
+- 1.2 GB	
+trip data/fhvhv_tripdata_2019-03.csv
+
+- 1.4 GB	
+trip data/fhvhv_tripdata_2019-04.csv
+
+- 1.3 GB	
+trip data/fhvhv_tripdata_2019-05.csv
+
+- 1.3 GB	
+trip data/fhvhv_tripdata_2019-06.csv
+
+- 1.2 GB	
+trip data/green_tripdata_2013-08.csv
+
+- 1.1 MB	
+trip data/green_tripdata_2013-09.csv
+
+- 7.3 MB	
+trip data/green_tripdata_2013-10.csv
+
+- 25.2 MB	
+trip data/green_tripdata_2013-11.csv
+
+- 56.4 MB	
+trip data/green_tripdata_2013-12.csv
+
+- 89.3 MB	
+trip data/green_tripdata_2014-01.csv
+
+- 119.1 MB	
+trip data/green_tripdata_2014-02.csv
+
+- 149.4 MB	
+trip data/green_tripdata_2014-03.csv
+
+- 192.7 MB	
+trip data/green_tripdata_2014-04.csv
+
+- 195.4 MB	
+trip data/green_tripdata_2014-05.csv
+
+- 212.4 MB	
+trip data/green_tripdata_2014-06.csv
+
+- 199.9 MB	
+trip data/green_tripdata_2014-07.csv
+
+- 190.3 MB	
+trip data/green_tripdata_2014-08.csv
+
+- 201.1 MB	
+trip data/green_tripdata_2014-09.csv
+
+- 203.6 MB	
+trip data/green_tripdata_2014-10.csv
+
+- 222.9 MB	
+trip data/green_tripdata_2014-11.csv
+
+- 231.4 MB	
+trip data/green_tripdata_2014-12.csv
+
+- 245.9 MB	
+trip data/green_tripdata_2015-01.csv
+
+- 232.0 MB	
+trip data/green_tripdata_2015-02.csv
+
+- 242.7 MB	
+trip data/green_tripdata_2015-03.csv
+
+- 265.6 MB	
+trip data/green_tripdata_2015-04.csv
+
+- 256.8 MB	
+trip data/green_tripdata_2015-05.csv
+
+- 275.9 MB	
+trip data/green_tripdata_2015-06.csv
+
+- 252.9 MB	
+trip data/green_tripdata_2015-07.csv
+
+- 235.0 MB	
+trip data/green_tripdata_2015-08.csv
+
+- 233.7 MB	
+trip data/green_tripdata_2015-09.csv
+
+- 228.0 MB	
+trip data/green_tripdata_2015-10.csv
+
+- 248.7 MB	
+trip data/green_tripdata_2015-11.csv
+
+- 233.3 MB	
+trip data/green_tripdata_2015-12.csv
+
+- 245.2 MB	
+trip data/green_tripdata_2016-01.csv
+
+- 220.3 MB	
+trip data/green_tripdata_2016-02.csv
+
+- 230.2 MB	
+trip data/green_tripdata_2016-03.csv
+
+- 240.3 MB	
+trip data/green_tripdata_2016-04.csv
+
+- 235.5 MB	
+trip data/green_tripdata_2016-05.csv
+
+- 234.5 MB	
+trip data/green_tripdata_2016-06.csv
+
+- 214.2 MB	
+trip data/green_tripdata_2016-07.csv
+
+- 116.6 MB	
+trip data/green_tripdata_2016-08.csv
+
+- 109.1 MB	
+trip data/green_tripdata_2016-09.csv
+
+- 101.6 MB	
+trip data/green_tripdata_2016-10.csv
+
+- 109.5 MB	
+trip data/green_tripdata_2016-11.csv
+
+- 100.3 MB	
+trip data/green_tripdata_2016-12.csv
+
+- 106.8 MB	
+trip data/green_tripdata_2017-01.csv
+
+- 91.3 MB	
+trip data/green_tripdata_2017-02.csv
+
+- 87.4 MB	
+trip data/green_tripdata_2017-03.csv
+
+- 98.9 MB	
+trip data/green_tripdata_2017-04.csv
+
+- 92.4 MB	
+trip data/green_tripdata_2017-05.csv
+
+- 90.5 MB	
+trip data/green_tripdata_2017-06.csv
+
+- 83.4 MB	
+trip data/green_tripdata_2017-07.csv
+
+- 78.2 MB	
+trip data/green_tripdata_2017-08.csv
+
+- 74.1 MB	
+trip data/green_tripdata_2017-09.csv
+
+- 75.4 MB	
+trip data/green_tripdata_2017-10.csv
+
+- 79.1 MB	
+trip data/green_tripdata_2017-11.csv
+
+- 74.6 MB	
+trip data/green_tripdata_2017-12.csv
+
+- 77.3 MB	
+trip data/green_tripdata_2018-01.csv
+
+- 67.6 MB	
+trip data/green_tripdata_2018-02.csv
+
+- 65.7 MB	
+trip data/green_tripdata_2018-03.csv
+
+- 71.4 MB	
+trip data/green_tripdata_2018-04.csv
+
+- 68.3 MB	
+trip data/green_tripdata_2018-05.csv
+
+- 68.1 MB	
+trip data/green_tripdata_2018-06.csv
+
+- 63.1 MB	
+trip data/green_tripdata_2018-07.csv
+
+- 58.4 MB	
+trip data/green_tripdata_2018-08.csv
+
+- 56.9 MB	
+trip data/green_tripdata_2018-09.csv
+
+- 57.0 MB	
+trip data/green_tripdata_2018-10.csv
+
+- 60.7 MB	
+trip data/green_tripdata_2018-11.csv
+
+- 56.1 MB	
+trip data/green_tripdata_2018-12.csv
+
+- 58.5 MB	
+trip data/green_tripdata_2019-01.csv
+
+- 54.5 MB	
+trip data/green_tripdata_2019-02.csv
+
+- 50.5 MB	
+trip data/green_tripdata_2019-03.csv
+
+- 52.7 MB	
+trip data/green_tripdata_2019-04.csv
+
+- 45.2 MB	
+trip data/green_tripdata_2019-05.csv
+
+- 44.3 MB	
+trip data/green_tripdata_2019-06.csv
+
+- 41.3 MB	
+trip data/yellow_tripdata_2009-01.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2009-02.csv
+
+- 2.2 GB	
+trip data/yellow_tripdata_2009-03.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2009-04.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2009-05.csv
+
+- 2.5 GB	
+trip data/yellow_tripdata_2009-06.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2009-07.csv
+
+- 2.3 GB	
+trip data/yellow_tripdata_2009-08.csv
+
+- 2.3 GB	
+trip data/yellow_tripdata_2009-09.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2009-10.csv
+
+- 2.6 GB	
+trip data/yellow_tripdata_2009-11.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2009-12.csv
+
+- 2.5 GB	
+trip data/yellow_tripdata_2010-01.csv
+
+- 2.5 GB	
+trip data/yellow_tripdata_2010-02.csv
+
+- 1.9 GB	
+trip data/yellow_tripdata_2010-03.csv
+
+- 2.2 GB	
+trip data/yellow_tripdata_2010-04.csv
+
+- 2.6 GB	
+trip data/yellow_tripdata_2010-05.csv
+
+- 2.6 GB	
+trip data/yellow_tripdata_2010-06.csv
+
+- 2.5 GB	
+trip data/yellow_tripdata_2010-07.csv
+
+- 2.5 GB	
+trip data/yellow_tripdata_2010-08.csv
+
+- 2.1 GB	
+trip data/yellow_tripdata_2010-09.csv
+
+- 2.7 GB	
+trip data/yellow_tripdata_2010-10.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2010-11.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2010-12.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2011-01.csv
+
+- 2.3 GB	
+trip data/yellow_tripdata_2011-02.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2011-03.csv
+
+- 2.7 GB	
+trip data/yellow_tripdata_2011-04.csv
+
+- 2.5 GB	
+trip data/yellow_tripdata_2011-05.csv
+
+- 2.7 GB	
+trip data/yellow_tripdata_2011-06.csv
+
+- 2.6 GB	
+trip data/yellow_tripdata_2011-07.csv
+
+- 2.5 GB	
+trip data/yellow_tripdata_2011-08.csv
+
+- 2.3 GB	
+trip data/yellow_tripdata_2011-09.csv
+
+- 2.5 GB	
+trip data/yellow_tripdata_2011-10.csv
+
+- 2.7 GB	
+trip data/yellow_tripdata_2011-11.csv
+
+- 2.5 GB	
+trip data/yellow_tripdata_2011-12.csv
+
+- 2.6 GB	
+trip data/yellow_tripdata_2012-01.csv
+
+- 2.6 GB	
+trip data/yellow_tripdata_2012-02.csv
+
+- 2.6 GB	
+trip data/yellow_tripdata_2012-03.csv
+
+- 2.8 GB	
+trip data/yellow_tripdata_2012-04.csv
+
+- 2.7 GB	
+trip data/yellow_tripdata_2012-05.csv
+
+- 2.7 GB	
+trip data/yellow_tripdata_2012-06.csv
+
+- 2.6 GB	
+trip data/yellow_tripdata_2012-07.csv
+
+- 2.5 GB	
+trip data/yellow_tripdata_2012-08.csv
+
+- 2.5 GB	
+trip data/yellow_tripdata_2012-09.csv
+
+- 2.3 GB	
+trip data/yellow_tripdata_2012-10.csv
+
+- 2.3 GB	
+trip data/yellow_tripdata_2012-11.csv
+
+- 2.1 GB	
+trip data/yellow_tripdata_2012-12.csv
+
+- 2.3 GB	
+trip data/yellow_tripdata_2013-01.csv
+
+- 2.3 GB	
+trip data/yellow_tripdata_2013-02.csv
+
+- 2.2 GB	
+trip data/yellow_tripdata_2013-03.csv
+
+- 2.5 GB	
+trip data/yellow_tripdata_2013-04.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2013-05.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2013-06.csv
+
+- 2.3 GB	
+trip data/yellow_tripdata_2013-07.csv
+
+- 2.2 GB	
+trip data/yellow_tripdata_2013-08.csv
+
+- 2.0 GB	
+trip data/yellow_tripdata_2013-09.csv
+
+- 2.2 GB	
+trip data/yellow_tripdata_2013-10.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2013-11.csv
+
+- 2.3 GB	
+trip data/yellow_tripdata_2013-12.csv
+
+- 2.2 GB	
+trip data/yellow_tripdata_2014-01.csv
+
+- 2.2 GB	
+trip data/yellow_tripdata_2014-02.csv
+
+- 2.1 GB	
+trip data/yellow_tripdata_2014-03.csv
+
+- 2.4 GB	
+trip data/yellow_tripdata_2014-04.csv
+
+- 2.3 GB	
+trip data/yellow_tripdata_2014-05.csv
+
+- 2.3 GB	
+trip data/yellow_tripdata_2014-06.csv
+
+- 2.2 GB	
+trip data/yellow_tripdata_2014-07.csv
+
+- 2.1 GB	
+trip data/yellow_tripdata_2014-08.csv
+
+- 2.0 GB	
+trip data/yellow_tripdata_2014-09.csv
+
+- 2.1 GB	
+trip data/yellow_tripdata_2014-10.csv
+
+- 2.2 GB	
+trip data/yellow_tripdata_2014-11.csv
+
+- 2.1 GB	
+trip data/yellow_tripdata_2014-12.csv
+
+- 2.0 GB	
+trip data/yellow_tripdata_2015-01.csv
+
+- 1.8 GB	
+trip data/yellow_tripdata_2015-02.csv
+
+- 1.8 GB	
+trip data/yellow_tripdata_2015-03.csv
+
+- 1.9 GB	
+trip data/yellow_tripdata_2015-04.csv
+
+- 1.9 GB	
+trip data/yellow_tripdata_2015-05.csv
+
+- 1.9 GB	
+trip data/yellow_tripdata_2015-06.csv
+
+- 1.8 GB	
+trip data/yellow_tripdata_2015-07.csv
+
+- 1.7 GB	
+trip data/yellow_tripdata_2015-08.csv
+
+- 1.6 GB	
+trip data/yellow_tripdata_2015-09.csv
+
+- 1.6 GB	
+trip data/yellow_tripdata_2015-10.csv
+
+- 1.8 GB	
+trip data/yellow_tripdata_2015-11.csv
+
+- 1.7 GB	
+trip data/yellow_tripdata_2015-12.csv
+
+- 1.7 GB	
+trip data/yellow_tripdata_2016-01.csv
+
+- 1.6 GB	
+trip data/yellow_tripdata_2016-02.csv
+
+- 1.7 GB	
+trip data/yellow_tripdata_2016-03.csv
+
+- 1.8 GB	
+trip data/yellow_tripdata_2016-04.csv
+
+- 1.7 GB	
+trip data/yellow_tripdata_2016-05.csv
+
+- 1.7 GB	
+trip data/yellow_tripdata_2016-06.csv
+
+- 1.6 GB	
+trip data/yellow_tripdata_2016-07.csv
+
+- 884.7 MB	
+trip data/yellow_tripdata_2016-08.csv
+
+- 854.3 MB	
+trip data/yellow_tripdata_2016-09.csv
+
+- 870.0 MB	
+trip data/yellow_tripdata_2016-10.csv
+
+- 933.4 MB	
+trip data/yellow_tripdata_2016-11.csv
+
+- 868.7 MB	
+trip data/yellow_tripdata_2016-12.csv
+
+- 897.8 MB	
+trip data/yellow_tripdata_2017-01.csv
+
+- 815.3 MB	
+trip data/yellow_tripdata_2017-02.csv
+
+- 770.6 MB	
+trip data/yellow_tripdata_2017-03.csv
+
+- 865.6 MB	
+trip data/yellow_tripdata_2017-04.csv
+
+- 844.6 MB	
+trip data/yellow_tripdata_2017-05.csv
+
+- 849.7 MB	
+trip data/yellow_tripdata_2017-06.csv
+
+- 812.4 MB	
+trip data/yellow_tripdata_2017-07.csv
+
+- 722.1 MB	
+trip data/yellow_tripdata_2017-08.csv
+
+- 708.0 MB	
+trip data/yellow_tripdata_2017-09.csv
+
+- 752.5 MB	
+trip data/yellow_tripdata_2017-10.csv
+
+- 822.1 MB	
+trip data/yellow_tripdata_2017-11.csv
+
+- 781.2 MB	
+trip data/yellow_tripdata_2017-12.csv
+
+- 799.3 MB	
+trip data/yellow_tripdata_2018-01.csv
+
+- 736.3 MB	
+trip data/yellow_tripdata_2018-02.csv
+
+- 714.1 MB	
+trip data/yellow_tripdata_2018-03.csv
+
+- 793.1 MB	
+trip data/yellow_tripdata_2018-04.csv
+
+- 783.2 MB	
+trip data/yellow_tripdata_2018-05.csv
+
+- 776.6 MB	
+trip data/yellow_tripdata_2018-06.csv
+
+- 733.7 MB	
+trip data/yellow_tripdata_2018-07.csv
+
+- 660.2 MB	
+trip data/yellow_tripdata_2018-08.csv
+
+- 660.3 MB	
+trip data/yellow_tripdata_2018-09.csv
+
+- 677.1 MB	
+trip data/yellow_tripdata_2018-10.csv
+
+- 743.4 MB	
+trip data/yellow_tripdata_2018-11.csv
+
+- 686.1 MB	
+trip data/yellow_tripdata_2018-12.csv
+
+- 688.1 MB	
+trip data/yellow_tripdata_2019-01.csv
+
+- 655.3 MB	
+trip data/yellow_tripdata_2019-02.csv
+
+- 619.8 MB	
+trip data/yellow_tripdata_2019-03.csv
+
+- 692.6 MB	
+trip data/yellow_tripdata_2019-04.csv
+
+- 657.3 MB	
+trip data/yellow_tripdata_2019-05.csv
+
+- 669.0 MB	
+trip data/yellow_tripdata_2019-06.csv
+
+- 613.7 MB	
