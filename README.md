@@ -15,6 +15,6 @@ Relying on public transport systems to travel from one location to the next usua
 
 ![Image description](images/first_last_mile.png)
 
-For people who use public transportation, when they get off the subway or bus, how can they get to their final destinations if it's too far for walking? Maybe by taxi or bike.
+For people who use public transportation, when they get off the subway or bus, how can they get to their final destinations if it's too far for walking? Maybe by taxi or bike. Knowing this pattern will help public transit agencies to plan better bus routes accordingly. Sharing bike and scooter companies will also be able to allocate resouces more efficiently, especially during rush hours.
 
-If we can know the most popular destinations from/to each transportation hub at different times of the day by analyzing the taxi and bike sharing data, it wll help public transit agencies to plan their bus routes accordingly. Sharing bike and scooter companies will also be able to allocate resouces more efficiently, especially during rush hours.
+First&LastMile is designed to detect the most popular destinations from/to each transportation hub at different times of the day by analyzing the taxi and bike sharing data.
