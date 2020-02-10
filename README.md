@@ -19,13 +19,19 @@ First&LastMile is designed to detect the most popular destinations from/to each 
 ## Data
 1. New York Yellow and Green Taxi Trip Records([Link](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)):  
 Green taxi: 10GB, 2013.08-2019.06  
-Yellow taxi: 230GB, 2009.01-2019.06
-
+Yellow taxi: 230GB, 2009.01-2019.06  
 Fields includes:  
 * VendorID
+* pick-up and drop-off dates/times
+* pick-up and drop-off locations
+* trip distances
+* itemized fares
+* rate types
+* payment types
+* driver-reported passenger counts
 
-2. New York Citi Bike Trip Data([Link](https://www.citibikenyc.com/system-data)):
-
+2. New York Citi Bike Trip Data([Link](https://www.citibikenyc.com/system-data)):  
+20GB 2013.06-2019.12  
 Fields includes:  
 * Trip Duration (seconds)
 * Start Time and Date
