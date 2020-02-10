@@ -14,3 +14,7 @@ What is the "First & Last Mile"?
 Relying on public transport systems to travel from one location to the next usually requires the commuter to walk a considerable distance to and from each of the transit stations en route. The difficulty of getting people from starting points to transportation hubs are commonly referred to as "First Mile" problem. Similarly, "Last Mile" problem is about getting pople from transportation hubs to their final destinations.
 
 ![Image description](images/first_last_mile.png)
+
+For people who use public transportation, when they get off the subway or bus, how can they get to their final destinations if it's too far for walking? Maybe by taxi or bike.
+
+If we can know the most popular destinations from/to each transportation hub at different times of the day by analyzing the taxi and bike sharing data, it wll help public transit agencies to plan their bus routes accordingly. Sharing bike and scooter companies will also be able to allocate resouces more efficiently, especially during rush hours.
