@@ -18,3 +18,9 @@ Relying on public transport systems to travel from one location to the next usua
 For people who use public transportation, when they get off the subway or bus, how can they get to their final destinations if it's too far for walking? Maybe by taxi or bike. Knowing this pattern will help public transit agencies to plan better bus routes accordingly. Sharing bike and scooter companies will also be able to allocate resouces more efficiently, especially during rush hours.
 
 First&LastMile is designed to detect the most popular destinations from/to each transportation hub at different times of the day by analyzing the taxi and bike sharing data.
+
+## Data
+1. New York yellow and green taxi trip records: [Dataset](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+Green taxi: 10GB, 2013.08-2019.06
+Yellow taxi: 230GB, 2009.01-2019.06
+
