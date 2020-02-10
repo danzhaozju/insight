@@ -1,5 +1,6 @@
 # First & Last Mile
-A Popular Origin & Destination Detection Platform [Demo slides](https://docs.google.com/presentation/d/1gMlslmQWmz4trn8RqsnwAkjDfQUjU7dEbmC6RHoGTdc/edit#slide=id.g7d745c5dc7_4_0) [UI](http://fasterprocessor.me/) (TO BE FINISHED)
+[Demo slides](https://docs.google.com/presentation/d/1gMlslmQWmz4trn8RqsnwAkjDfQUjU7dEbmC6RHoGTdc/edit#slide=id.g7d745c5dc7_4_0) | [UI](http://fasterprocessor.me/) (TO BE FINISHED)
+A Popular Origin & Destination Detection Platform
 
 This project is designed and completed by Dan Zhao, a Fellow of the Insight Data Engineering program(Silicon Valley, 2020A).
 
@@ -15,7 +16,7 @@ For people who use public transportation, when they get off the subway or bus, h
 First&LastMile is designed to detect the most popular destinations from/to each transportation hub at different times of the day by analyzing the taxi and bike sharing data.
 
 ## Data
-1. New York yellow and green taxi trip records([Link](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)):
-Green taxi: 10GB, 2013.08-2019.06
+1. New York yellow and green taxi trip records([Link](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)):  
+Green taxi: 10GB, 2013.08-2019.06  
 Yellow taxi: 230GB, 2009.01-2019.06
 
