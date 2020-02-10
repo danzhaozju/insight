@@ -1,5 +1,5 @@
 # First & Last Mile
-A Popular Origin & Destination Detection Platform
+A Plarform for Popular Origin & Destination Detection
 
 [Demo slides](https://docs.google.com/presentation/d/1gMlslmQWmz4trn8RqsnwAkjDfQUjU7dEbmC6RHoGTdc/edit#slide=id.g7d745c5dc7_4_0) | [UI](http://fasterprocessor.me/) (TO BE FINISHED)
 
@@ -20,7 +20,7 @@ First&LastMile is designed to detect the most popular destinations from/to each 
 1. New York Yellow and Green Taxi Trip Records([Link](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)):  
 Green taxi: 10GB, 2013.08-2019.06  
 Yellow taxi: 230GB, 2009.01-2019.06  
-Fields includes:  
+Fields includes:
 * VendorID
 * pick-up and drop-off dates/times
 * pick-up and drop-off locations
@@ -32,7 +32,7 @@ Fields includes:
 
 2. New York Citi Bike Trip Data([Link](https://www.citibikenyc.com/system-data)):  
 20GB 2013.06-2019.12  
-Fields includes:  
+Fields includes:
 * Trip Duration (seconds)
 * Start Time and Date
 * Stop Time and Date
