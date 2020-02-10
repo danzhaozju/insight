@@ -9,5 +9,8 @@ UI: [Link](http://fasterprocessor.me/)
 (TO BE FINISHED)
 
 ## Overview
-What is the "First & Last Mile"? Relying on public transport systems to travel from one location to the next usually requires the commuter to walk a considerable distance to and from each of the transit stations en route. The difficulty of getting people from starting points to transportation hubs are commonly referred to as "First Mile" problem. Similarly, "Last Mile" problem is about getting pople from transportation hubs to their final destinations.
+What is the "First & Last Mile"? 
+
+Relying on public transport systems to travel from one location to the next usually requires the commuter to walk a considerable distance to and from each of the transit stations en route. The difficulty of getting people from starting points to transportation hubs are commonly referred to as "First Mile" problem. Similarly, "Last Mile" problem is about getting pople from transportation hubs to their final destinations.
+
 ![Image description](images/first_last_mile.png)
