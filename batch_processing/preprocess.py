@@ -18,6 +18,7 @@ def preprocess_bike(spark):
 		'start_longitude','end_latitude','end_longitude'])
 	target_path = 's3a://citi-bike-trip-data/parquet/preprocessed-citi-bike-trips-201308_201906'
 	preprocessed_trips.write.mode("overwrite").parquet(target_path)
+	preprocessed_trips.show(1)
 
 def preprocess_yellow_taxi(spark):
 	"""
@@ -33,6 +34,7 @@ def preprocess_yellow_taxi(spark):
 		'end_longitude','end_latitude','passenger_count','distance','total_amount'])
 	target_path = 's3a://ny-taxi-trip-data/yellow_taxi/parquet/preprocessed-yellow-taxi-201308_201412'
 	preprocessed_trips.write.mode("overwrite").parquet(target_path)
+	preprocessed_trips.show(1)
 
 	yellow_taxi_paths = generate_paths(head, tail,'2015-01-01','2016-06-01','%Y-%m')
 	trips = create_df_from_csv_paths(spark, yellow_taxi_paths, YELLOW_TAXI_SCHEMA_201501_201606)
@@ -40,6 +42,7 @@ def preprocess_yellow_taxi(spark):
 		'end_longitude','end_latitude','passenger_count','distance','total_amount'])
 	target_path = 's3a://ny-taxi-trip-data/yellow_taxi/parquet/preprocessed-yellow-taxi-201501_201606'
 	preprocessed_trips.write.mode("overwrite").parquet(target_path)
+	preprocessed_trips.show(1)
 
 	yellow_taxi_paths = generate_paths(head, tail,'2016-07-01','2019-06-01','%Y-%m')
 	trips = create_df_from_csv_paths(spark, yellow_taxi_paths, YELLOW_TAXI_SCHEMA_201607_201906)
@@ -52,6 +55,7 @@ def preprocess_yellow_taxi(spark):
 		AND end_locationID = D.location_i")
 	target_path = 's3a://ny-taxi-trip-data/yellow_taxi/parquet/preprocessed-yellow-taxi-201607_201906'
 	taxi_lat_lon.write.mode("overwrite").parquet(target_path)
+	preprocessed_trips.show(1)
 
 def preprocess_green_taxi(spark):
 	"""
@@ -68,6 +72,7 @@ def preprocess_green_taxi(spark):
 		'end_longitude','end_latitude','passenger_count','distance','total_amount'])
 	target_path = 's3a://ny-taxi-trip-data/green_taxi/parquet/preprocessed-green-taxi-201308_201412'
 	preprocessed_trips.write.mode("overwrite").parquet(target_path)
+	preprocessed_trips.show(1)
 
 	green_taxi_paths = generate_paths(head, tail,'2015-01-01','2016-06-01','%Y-%m')
 	trips = create_df_from_csv_paths(spark, green_taxi_paths, GREEN_TAXI_SCHEMA_201501_201606)
@@ -75,6 +80,7 @@ def preprocess_green_taxi(spark):
 		'end_longitude','end_latitude','passenger_count','distance','total_amount'])
 	target_path = 's3a://ny-taxi-trip-data/green_taxi/parquet/preprocessed-green-taxi-201501_201606'
 	preprocessed_trips.write.mode("overwrite").parquet(target_path)
+	preprocessed_trips.show(1)
 
 	green_taxi_paths = generate_paths(head, tail,'2016-07-01','2018-12-01','%Y-%m')
 	trips = create_df_from_csv_paths(spark, green_taxi_paths, GREEN_TAXI_SCHEMA_201607_201812)
@@ -87,6 +93,7 @@ def preprocess_green_taxi(spark):
 		AND end_locationID = D.location_i")
 	target_path = 's3a://ny-taxi-trip-data/green_taxi/parquet/preprocessed-green-taxi-201607_201812'
 	taxi_lat_lon.write.mode("overwrite").parquet(target_path)
+	preprocessed_trips.show(1)
 
 	green_taxi_paths = generate_paths(head, tail,'2019-01-01','2019-06-01','%Y-%m')
 	trips = create_df_from_csv_paths(spark, green_taxi_paths, GREEN_TAXI_SCHEMA_201901_201906)
@@ -99,6 +106,7 @@ def preprocess_green_taxi(spark):
 		AND end_locationID = D.location_i")
 	target_path = 's3a://ny-taxi-trip-data/green_taxi/parquet/preprocessed-green-taxi-201901_201906'
 	taxi_lat_lon.write.mode("overwrite").parquet(target_path)
+	preprocessed_trips.show(1)
 
 
 if __name__ == '__main__':
