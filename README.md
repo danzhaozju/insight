@@ -45,3 +45,42 @@ Fields includes:
 * Gender (Zero=unknown; 1=male; 2=female)
 * Year of Birth
 
+## Pipeline
+The raw data of New York taxi and citi bike data are downloaded and stored to s3. Geocoding work is done by Python. The raw data is preprocessed by Spark and stored back to s3 in Parquet format to save storage and improve performance. Then the data is ingested and processed by Spark. The aggregated result are stored in PostGIS, which has some convenient geo functions. Finally, Flask is used to build a information query UI.
+
+![Image description](images/pipeline.png)
+
+## Engineering Challenges
+### Inconsistent Schema
+**Problem:**  
+1. Trip files uploaded monthly with different schema
+2. Some have LocationID as location information while others have longitude & latitude.
+
+**Solution:**  
+1. Define a schema for ingesting
+2. Broadcast join with LocationID lookup table by converting LocationID to longitude & latitude
+3. Select needed columns and store back to s3 in parquet format
+
+### Reverse Geocoding
+**Problem:**  
+1. Taxi LocationID information in shapefiles
+2. Missing subway station longitude and latitude
+
+**Solution:**  
+1. Generate LocationID look up table by reverse geocoding the neighborhood polygons from shapefiles with Python
+2. Generate subway station look up table by averaging the longitude and latitude of entrances
+
+![Image description](images/LocationID_lookup_table.png)
+
+### Aggregating Points
+**Problem:**  
+1. Points with slightly different latitude and longitude belong to the same destination
+2. Too many points for UI to show on the map
+
+**Possible Solutions:**  
+1. round the longitude and latitude (Irregular shape -- not chosen)
+2. use taxi location id (Too big area -- not chosen)
+3. use K-means algorithm to aggregate locations to 100 blocks(for example) (High latency -- not choosen)
+4. GeoHash (chosen!)
+
+
