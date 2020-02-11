@@ -1,5 +1,8 @@
 from pyspark.sql.types import *
 
+"""
+Define the schema for .csv files of New York City citibike and taxi data
+"""
 BIKE_SCHEMA = StructType([
 	StructField('duration', IntegerType(), True),
 	StructField('start_time', TimestampType(), True),
