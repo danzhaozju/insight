@@ -1,7 +1,7 @@
 import findspark
 import pyspark
 from pyspark.sql.functions import *
-from util import create_spark_session, create_df_from_csv_paths
+from util import create_spark_session, create_df_from_csv_paths, generate_paths
 from schema import BIKE_SCHEMA, YELLOW_TAXI_SCHEMA_201308_201412, YELLOW_TAXI_SCHEMA_201501_201606, YELLOW_TAXI_SCHEMA_201607_201906, GREEN_TAXI_SCHEMA_201308_201412, GREEN_TAXI_SCHEMA_201501_201606, GREEN_TAXI_SCHEMA_201607_201812, GREEN_TAXI_SCHEMA_201901_201906
 
 findspark.init("/usr/local/spark")
