@@ -30,7 +30,7 @@ YELLOW_TAXI_SCHEMA_201308_201412 = StructType([
 	StructField('store_and_fwd_flag', StringType(), True),
 	StructField('end_longitude', DoubleType(), True),
 	StructField('end_latitude', DoubleType(), True),
-	StructField('payment_type', IntegerType(), True),
+	StructField('payment_type', StringType(), True),
 	StructField('fare_amount', DoubleType(), True),
 	StructField('extra', DoubleType(), True),
 	StructField('mta_tax', DoubleType(), True),
@@ -51,7 +51,7 @@ YELLOW_TAXI_SCHEMA_201501_201606 = StructType([
 	StructField('store_and_fwd_flag', StringType(), True),
 	StructField('end_longitude', DoubleType(), True),
 	StructField('end_latitude', DoubleType(), True),
-	StructField('payment_type', IntegerType(), True),
+	StructField('payment_type', StringType(), True),
 	StructField('fare_amount', DoubleType(), True),
 	StructField('extra', DoubleType(), True),
 	StructField('mta_tax', DoubleType(), True),
@@ -71,7 +71,7 @@ YELLOW_TAXI_SCHEMA_201607_201906 = StructType([
 	StructField('store_and_fwd_flag', StringType(), True),
 	StructField('start_locationID', IntegerType(), True),
 	StructField('end_locationID', IntegerType(), True),
-	StructField('payment_type', IntegerType(), True),
+	StructField('payment_type', StringType(), True),
 	StructField('fare_amount', DoubleType(), True),
 	StructField('extra', DoubleType(), True),
 	StructField('mta_tax', DoubleType(), True),
@@ -100,7 +100,7 @@ GREEN_TAXI_SCHEMA_201308_201412 = StructType([
 	StructField('tolls_amount', DoubleType(), True),
 	StructField('ehail_fee', DoubleType(), True),
 	StructField('total_amount', DoubleType(), True),
-	StructField('payment_type', IntegerType(), True),
+	StructField('payment_type', StringType(), True),
 	StructField('trip_type', IntegerType(), True)
 ])
 
@@ -124,7 +124,7 @@ GREEN_TAXI_SCHEMA_201501_201606 = StructType([
 	StructField('ehail_fee', DoubleType(), True),
 	StructField('improvement_surcharge', DoubleType(), True),
 	StructField('total_amount', DoubleType(), True),
-	StructField('payment_type', IntegerType(), True),
+	StructField('payment_type', StringType(), True),
 	StructField('trip_type', IntegerType(), True)
 ])
 
@@ -146,7 +146,7 @@ GREEN_TAXI_SCHEMA_201607_201812 = StructType([
 	StructField('ehail_fee', DoubleType(), True),
 	StructField('improvement_surcharge', DoubleType(), True),
 	StructField('total_amount', DoubleType(), True),
-	StructField('payment_type', IntegerType(), True),
+	StructField('payment_type', StringType(), True),
 	StructField('trip_type', IntegerType(), True)
 ])
 
@@ -168,7 +168,7 @@ GREEN_TAXI_SCHEMA_201901_201906 = StructType([
 	StructField('ehail_fee', DoubleType(), True),
 	StructField('improvement_surcharge', DoubleType(), True),
 	StructField('total_amount', DoubleType(), True),
-	StructField('payment_type', IntegerType(), True),
+	StructField('payment_type', StringType(), True),
 	StructField('trip_type', IntegerType(), True),
 	StructField('congestion_surcharge', DoubleType(), True)
 ])

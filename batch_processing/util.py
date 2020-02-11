@@ -11,7 +11,7 @@ def create_spark_session(app_name):
 def create_df_from_csv_paths(spark, paths, schema = None):
     if schema:
         df = spark.read.format("csv")\
-            .options(header='true') \
+            .options(header='false') \
             .options(delimiter=',') \
             .options(quote='"') \
             .options(escape='"') \
