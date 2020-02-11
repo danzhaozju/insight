@@ -11,20 +11,29 @@ def preprocess_bike(spark):
 	The funcion reads in all the .csv files of New York City citibike as dataframes with 
 	the same schema, select the needed fields and save it back to s3 in Parquet format.
 	"""
-	bike_paths = 's3a://citi-bike-trip-data/*-citibike-tripdata.csv'
+	bike_paths = 's3a://citi-bike-trip-data/201401-citibike-tripdata.csv'
 	trips = create_df_from_csv_paths(spark, bike_paths.split(','), BIKE_SCHEMA)
-	preprocessed_trips = trips.select(['duration','start_time','end_time','start_latitude','start_longitude','end_latitude','end_longitude'])
+	preprocessed_trips = trips.select(['duration','start_time','end_time','start_latitude',
+		'start_longitude','end_latitude','end_longitude'])
 	target_path = 's3a://citi-bike-trip-data/parquet/preprocessed-citi-bike-trips'
 	preprocessed_trips.write.parquet(target_path)
 
 def preprocess_yellow_taxi(spark):
 	head = 's3a://ny-taxi-trip-data/yellow_taxi/yellow_tripdata_'
 	tail = '.csv'
-	yellow_taxi_paths = generate_paths(head,tail,'2013-08-01','2014-12-01','%Y-%m')
+	yellow_taxi_paths = generate_paths(head,tail,'2013-08-01','2013-08-01','%Y-%m')
 	trips = create_df_from_csv_paths(spark, yellow_taxi_paths, YELLOW_TAXI_SCHEMA_201308_201412)
-	trips.show()
+	preprocessed_trips = trips.select(['start_time','end_time','start_longitude','start_latitude',
+		'end_longitude','end_latitude','passenger_count','distance','total_amount'])
+	target_path = 's3a://ny-taxi-trip-data/yellow_taxi/parquet/preprocessed-yellow-taxi-201308_201412'
+	preprocessed_trips.write.parquet(target_path)
 
 if __name__ == '__main__':
 	spark = create_spark_session('preprocess_trips_data')
-	#preprocess_bike(spark)
+	preprocess_bike(spark)
 	preprocess_yellow_taxi(spark)
+
+
+
+
+
