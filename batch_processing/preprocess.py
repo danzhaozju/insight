@@ -11,6 +11,7 @@ def preprocess_bike(spark):
 	"""
 	head = 's3a://citi-bike-trip-data/'
 	tail = '-citibike-tripdata.csv'
+
 	bike_paths = generate_paths(head, tail,'2013-08-01','2019-06-01','%Y%m')
 	trips = create_df_from_csv_paths(spark, bike_paths, BIKE_SCHEMA)
 	preprocessed_trips = trips.select(['duration','start_time','end_time','start_latitude',
@@ -25,6 +26,7 @@ def preprocess_yellow_taxi(spark):
 	"""
 	head = 's3a://ny-taxi-trip-data/yellow_taxi/yellow_tripdata_'
 	tail = '.csv'
+
 	yellow_taxi_paths = generate_paths(head, tail,'2013-08-01','2014-12-01','%Y-%m')
 	trips = create_df_from_csv_paths(spark, yellow_taxi_paths, YELLOW_TAXI_SCHEMA_201308_201412)
 	preprocessed_trips = trips.select(['start_time','end_time','start_longitude','start_latitude',
@@ -59,6 +61,7 @@ def preprocess_green_taxi(spark):
 
 	head = 's3a://ny-taxi-trip-data/green_taxi/green_tripdata_'
 	tail = '.csv'
+
 	green_taxi_paths = generate_paths(head, tail,'2013-08-01','2014-12-01','%Y-%m')
 	trips = create_df_from_csv_paths(spark, green_taxi_paths, GREEN_TAXI_SCHEMA_201308_201412)
 	preprocessed_trips = trips.select(['start_time','end_time','start_longitude','start_latitude',
@@ -100,7 +103,7 @@ def preprocess_green_taxi(spark):
 
 if __name__ == '__main__':
 	findspark.init("/usr/local/spark")
-	spark = create_spark_session('preprocess_green_trips_data')
+	spark = create_spark_session('preprocess_taxi_bike_trips_data')
 
 	taxi_locID_path = 's3a://ny-taxi-trip-data/taxi_locID_lon_lat.csv'
 	taxi_locIDs = create_df_from_csv_paths(spark, taxi_locID_path)
