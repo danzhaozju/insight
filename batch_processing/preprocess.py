@@ -14,8 +14,11 @@ def preprocess_bike(spark):
 	bike_paths = 's3a://citi-bike-trip-data/*-citibike-tripdata.csv'
 	trips = create_df_from_csv_paths(spark, bike_paths, BIKE_SCHEMA)
 	preprocessed_trips = trips.select(['duration','start_time','end_time','start_latitude','start_longitude','end_latitude','end_longitude'])
-	target_path = 's3a://citi-bike-trip-data/parquet/preprocessed-citi-bike-trips.parquet'
-	preprocessed_trips.coalesce(1).write.parquet(target_path)
+	target_path = 's3a://citi-bike-trip-data/parquet/preprocessed-citi-bike-trips'
+	preprocessed_trips.write.parquet(target_path)
+
+def preprocess_yellow_taxi(spark):
+	yellow_taxi_paths = ''
 
 if __name__ == '__main__':
 	spark = create_spark_session('preprocess_trips_data')
