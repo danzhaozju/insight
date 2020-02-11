@@ -12,11 +12,11 @@ def create_df_from_csv_paths(spark, paths, schema = None):
     if schema:
 		df = spark.read.format("csv").option("header", "true").\
         	schema(schema).\
-        	load(paths.split(','))
+        	load(paths)
     else:
     	df = spark.read.format("csv").option("header", "true").\
         	option('inferschema','true').\
-        	load(paths.split(','))
+        	load(paths)
     return df
 
 # Generate path monthly with output_format between time1 and time2
