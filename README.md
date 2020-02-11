@@ -3,7 +3,7 @@ A Plarform for Popular Origin & Destination Detection
 
 [Demo slides](https://docs.google.com/presentation/d/1gMlslmQWmz4trn8RqsnwAkjDfQUjU7dEbmC6RHoGTdc/edit#slide=id.g7d745c5dc7_4_0) | [UI](http://fasterprocessor.me/) (TO BE FINISHED)
 
-This project is designed and completed by Dan Zhao, a Fellow of the Insight Data Engineering program(Silicon Valley, 2020A).
+This project is designed and completed by Dan Zhao, a Fellow of the Insight Data Engineering program (Silicon Valley, 2020A).
 
 ## Overview
 What is the "First & Last Mile"? 
@@ -17,14 +17,14 @@ For people who use public transportation, when they get off the subway or bus, h
 First&LastMile is designed to detect the most popular destinations from/to each transportation hub at different times of the day by analyzing the taxi and bike sharing data.
 
 ## Data
-1. New York Yellow and Green Taxi Trip Records([Link](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)):  
+#### 1. New York Yellow and Green Taxi Trip Records([Link](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)):  
 Green taxi: 10GB, 2013.08-2019.06  
 Yellow taxi: 230GB, 2009.01-2019.06  
 Fields includes:  
 VendorID, pick-up and drop-off dates/times, pick-up and drop-off locations, trip distances, itemized fares, rate types, payment types, driver-reported passenger counts
 
-2. New York Citi Bike Trip Data([Link](https://www.citibikenyc.com/system-data)):  
-20GB 2013.06-2019.12  
+#### 2. New York Citi Bike Trip Data([Link](https://www.citibikenyc.com/system-data)):  
+20GB, 2013.06-2019.12  
 Fields includes:  
 Trip Duration (seconds), Start Time and Date, Stop Time and Date, Start Station Name, End Station Name, Station ID, Station Lat/Long, Bike ID, User Type, Gender, Year of Birth
 
