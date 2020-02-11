@@ -16,7 +16,7 @@ def preprocess_bike(spark):
 	preprocessed_trips = trips.select(['duration','start_time','end_time','start_latitude',
 		'start_longitude','end_latitude','end_longitude'])
 	target_path = 's3a://citi-bike-trip-data/parquet/preprocessed-citi-bike-trips'
-	preprocessed_trips.write.parquet(target_path)
+	preprocessed_trips.coalesce(1).write.parquet(target_path)
 
 def preprocess_yellow_taxi(spark):
 	head = 's3a://ny-taxi-trip-data/yellow_taxi/yellow_tripdata_'
@@ -26,7 +26,7 @@ def preprocess_yellow_taxi(spark):
 	preprocessed_trips = trips.select(['start_time','end_time','start_longitude','start_latitude',
 		'end_longitude','end_latitude','passenger_count','distance','total_amount'])
 	target_path = 's3a://ny-taxi-trip-data/yellow_taxi/parquet/preprocessed-yellow-taxi-201308_201412'
-	preprocessed_trips.write.parquet(target_path)
+	preprocessed_trips.coalesce(1).write.parquet(target_path)
 
 if __name__ == '__main__':
 	spark = create_spark_session('preprocess_trips_data')
