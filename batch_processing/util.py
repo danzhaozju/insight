@@ -1,4 +1,5 @@
 import pyspark
+import pandas as pd
 from pyspark.sql import SparkSession
 
 # Create a new spark session with the APP_NAME.
