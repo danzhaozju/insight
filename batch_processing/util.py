@@ -10,13 +10,17 @@ def create_spark_session(app_name):
 # Create a dataframe from csv paths.
 def create_df_from_csv_paths(spark, paths, schema = None):
     if schema:
-		df = spark.read.format("csv").option("header", "true").\
-        	schema(schema).\
-        	load(paths)
+        df = spark.read.format("csv")\
+            .options(header='true') \
+            .options(delimiter=',') \
+            .options(quote='"') \
+            .options(escape='"') \
+            .schema(schema)\
+            .load(paths)
     else:
-    	df = spark.read.format("csv").option("header", "true").\
-        	option('inferschema','true').\
-        	load(paths)
+        df = spark.read.format("csv").option("header", "true").\
+            option('inferschema','true').\
+            load(paths)
     return df
 
 # Generate path monthly with output_format between time1 and time2
