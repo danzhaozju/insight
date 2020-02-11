@@ -51,8 +51,8 @@ The raw data of New York taxi and citi bike data are downloaded and stored to s3
 ![Image description](images/pipeline.png)
 
 ## Engineering Challenges
-### Inconsistent Schema
-**Problem:**  
+### 1. Inconsistent Schema
+Problem:  
 1. Trip files uploaded monthly with different schema
 2. Some have LocationID as location information while others have longitude & latitude.
 
@@ -61,8 +61,8 @@ The raw data of New York taxi and citi bike data are downloaded and stored to s3
 2. Broadcast join with LocationID lookup table by converting LocationID to longitude & latitude
 3. Select needed columns and store back to s3 in parquet format
 
-### Reverse Geocoding
-**Problem:**  
+### 2. Reverse Geocoding
+*Problem:* 
 1. Taxi LocationID information in shapefiles
 2. Missing subway station longitude and latitude
 
@@ -72,7 +72,7 @@ The raw data of New York taxi and citi bike data are downloaded and stored to s3
 
 ![Image description](images/LocationID_lookup_table.png)
 
-### Aggregating Points
+### 3. Aggregating Points
 **Problem:**  
 1. Points with slightly different latitude and longitude belong to the same destination
 2. Too many points for UI to show on the map
