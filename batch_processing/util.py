@@ -28,6 +28,13 @@ def create_df_from_csv_paths(spark, paths, schema = None):
             load(paths)
     return df
 
+def create_df_from_parquet_paths(spark, paths):
+    """
+    Create a dataframe from parquet format files
+    """
+    df = spark.read.parquet(paths)
+    return df
+
 def generate_paths(head, tail, time1, time2, output_format):
     """
     Generate path monthly with output_format between time1 and time2
