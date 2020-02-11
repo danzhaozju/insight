@@ -18,7 +18,7 @@ def preprocess_bike(spark):
 	preprocessed_trips.write.parquet(target_path)
 
 def preprocess_yellow_taxi(spark):
-	yellow_taxi_paths = 's3a://ny-taxi-trip-data/yellow_taxi/yellow_taxi/yellow_tripdata_2013-(0[89]|1[012]).csv'
+	yellow_taxi_paths = 's3a://ny-taxi-trip-data/yellow_taxi/yellow_taxi/yellow_tripdata_2013-0[89].csv'
 	trips = create_df_from_csv_paths(spark, yellow_taxi_paths, YELLOW_TAXI_SCHEMA_201308_201412)
 	trips.show(1)
 
