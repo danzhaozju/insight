@@ -34,10 +34,10 @@ The raw data of New York taxi and citi bike data are downloaded and stored to s3
 ![Image description](images/pipeline.png)
 
 ## Cluster Structure
-6 m5.xlarge AWS EC2 instances are needed to be launched for reproducing the environment:
-Spark cluster: 4 (1 for master node, 3 for worker nodes)
-Database: 1
-UI: 1
+6 m5.xlarge AWS EC2 instances are needed to be launched for reproducing the environment:  
+Spark cluster: 4 (1 for master node, 3 for worker nodes)  
+Database: 1  
+UI: 1  
 
 ## Engineering Challenges
 ### 1. Inconsistent Schema
