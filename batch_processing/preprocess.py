@@ -22,7 +22,7 @@ def preprocess_yellow_taxi(spark):
 	tail = '.csv'
 	yellow_taxi_paths = generate_paths(head,tail,'2013-08-01','2014-12-01','%Y-%m')
 	trips = create_df_from_csv_paths(spark, yellow_taxi_paths, YELLOW_TAXI_SCHEMA_201308_201412)
-	trips.show(1)
+	trips.show()
 
 if __name__ == '__main__':
 	spark = create_spark_session('preprocess_trips_data')
