@@ -17,3 +17,10 @@ def create_df_from_csv_paths(spark, paths, schema = None):
         	option('inferschema','true').\
         	load(paths.split(','))
     return df
+
+# Generate path monthly with output_format between time1 and time2
+def generate_paths(head, tail, time1, time2, output_format):
+    months = pd.date_range(time1,time2, 
+              freq='MS').strftime(output_format).tolist()
+    paths = [front + month + tail for month in months]
+    return paths
