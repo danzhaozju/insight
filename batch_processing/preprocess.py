@@ -37,7 +37,7 @@ def preprocess_yellow_taxi(spark):
 	# target_path = 's3a://ny-taxi-trip-data/yellow_taxi/parquet/preprocessed-yellow-taxi-201501_201606'
 	# preprocessed_trips.write.mode("overwrite").parquet(target_path)
 
-	yellow_taxi_paths = generate_paths(head, tail,'2016-07-01','2016-07-01','%Y-%m')
+	yellow_taxi_paths = generate_paths(head, tail,'2016-07-01','2019-06-01','%Y-%m')
 	trips = create_df_from_csv_paths(spark, yellow_taxi_paths, YELLOW_TAXI_SCHEMA_201607_201906)
 	preprocessed_trips = trips.select(['start_time','end_time','start_locationID','end_locationID',
 		'passenger_count','distance','total_amount'])
