@@ -23,5 +23,5 @@ def create_df_from_csv_paths(spark, paths, schema = None):
 def generate_paths(head, tail, time1, time2, output_format):
     months = pd.date_range(time1,time2, 
               freq='MS').strftime(output_format).tolist()
-    paths = [front + month + tail for month in months]
+    paths = [head + month + tail for month in months]
     return paths
