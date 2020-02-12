@@ -31,7 +31,7 @@ def process_green_taxi(spark):
 
 def add_geohash(df, precision=6):
     df = df.withColumn("start_geohash", geo_encoding(col('start_latitude'), col('start_longitude')))\
-                .withColumn("end_geohash",geo_encoding(col('end_latitude')),col('end_longitude'))
+                .withColumn("end_geohash",geo_encoding(col('end_latitude'),col('end_longitude')))
     return df
 
 
