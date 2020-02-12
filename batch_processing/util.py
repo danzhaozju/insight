@@ -1,6 +1,7 @@
 import pyspark
 import pandas as pd
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
 
 
 def create_spark_session(app_name):
@@ -9,6 +10,15 @@ def create_spark_session(app_name):
     """
     spark = SparkSession.builder.appName(app_name).getOrCreate()
     return spark
+
+def generate_paths(head, tail, time1, time2, output_format):
+    """
+    Generate path monthly with output_format between time1 and time2
+    """
+    months = pd.date_range(time1,time2, 
+              freq='MS').strftime(output_format).tolist()
+    paths = [head + month + tail for month in months]
+    return paths
 
 def create_df_from_csv_paths(spark, paths, schema = None):
     """
@@ -28,18 +38,9 @@ def create_df_from_csv_paths(spark, paths, schema = None):
             load(paths)
     return df
 
-def create_df_from_parquet_paths(spark, paths):
-    """
-    Create a dataframe from parquet format files
-    """
-    df = spark.read.parquet(paths)
+def split_start_time(df):
+    df = df.withColumn("year", year("start_time"))\
+            .withColumn("month"),month("start_time")\
+            .withColumn("day"),dayofmonth("start_time")\
+            .withColumn("hour"),hour("start_time")\
     return df
-
-def generate_paths(head, tail, time1, time2, output_format):
-    """
-    Generate path monthly with output_format between time1 and time2
-    """
-    months = pd.date_range(time1,time2, 
-              freq='MS').strftime(output_format).tolist()
-    paths = [head + month + tail for month in months]
-    return paths
