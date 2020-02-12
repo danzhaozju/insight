@@ -28,7 +28,7 @@ def process_green_taxi(spark):
 		AVG(distance) AS avg_distance, AVG(total_amount) AS avg_cost, AVG(duration) AS avg_duration\
 		FROM trips\
 		GROUP BY start_geohash, end_geohash, year, month")
-	# trips_p.show(2)
+	trips_p.show(2)
 	# print(trips_p.count())
 	# trips_from_station = spark.sql("SELECT S.station_name, T.*\
 	# 	FROM trips AS T, stations AS S\
