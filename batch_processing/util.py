@@ -1,5 +1,6 @@
 import pyspark
 import pandas as pd
+import geohash2
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
 from pyspark.sql.types import *
@@ -49,7 +50,6 @@ def split_start_time(df):
 def add_duration(df):
     df = df.withColumn("duration", (col('end_time').cast(DoubleType())-col('start_time').cast(DoubleType()))/60)
     return df
-
 
 
 
