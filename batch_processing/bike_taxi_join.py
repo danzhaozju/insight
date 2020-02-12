@@ -22,12 +22,17 @@ def process_green_taxi(spark):
 	trips = split_start_time(trips)
 	trips = add_duration(trips)
 	trips = add_geohash(trips, precision)
+
 	trips.show(2)
 	print(trips.count())
-	# trips.createTempView(trips)
-	# trips = spark.sql("SELECT *\
-	# 	FROM trips\
-	# 	")
+
+	trips.createTempView(trips)
+	trips_from_station = spark.sql("SELECT S.station_name, T.*\
+		FROM trips AS T, stations AS S\
+		WHERE T.start_geohash = S.geohash")
+	
+	trips_from_station.show(2)
+	print(trips_from_station.count())
 
 def add_geohash(df, precision=6):
     df = df.withColumn("start_geohash", geo_encoding(col('start_latitude'), col('start_longitude')))\
