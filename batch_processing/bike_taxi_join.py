@@ -25,7 +25,7 @@ def process_green_taxi(spark):
 	trips.show(2)
 	print(trips.count())
 
-	trips.createTempView(trips)
+	trips.createOrReplaceTempView('trips')
 	trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month, AVG(passenger_count) AS avg_passengers,\
 		AVG(distance) AS avg_distance, AVG(total_amount) AS avg_cost, AVG(duration) AS avg_duration\
 		FROM trips\
