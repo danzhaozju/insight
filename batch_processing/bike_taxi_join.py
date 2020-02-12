@@ -23,7 +23,7 @@ def process_green_taxi(spark):
 	trips = add_duration(trips)
 	trips = add_geohash(trips, precision)
 	trips.show(2)
-	trips.count()
+	print(trips.count())
 	# trips.createTempView(trips)
 	# trips = spark.sql("SELECT *\
 	# 	FROM trips\
@@ -50,7 +50,7 @@ if __name__ == '__main__':
 	stations = stations.withColumn("geohash", geo_encoding(col('latitude'), col('longitude')))
 	stations.createOrReplaceTempView("stations")
 	stations.show(2)
-	stations.count()
+	print(stations.count())
 
 	# process_bike(spark)
 	# process_yellow_taxi(spark)
