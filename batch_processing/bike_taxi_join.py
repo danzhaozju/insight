@@ -9,14 +9,19 @@ def process_bike(spark):
 	bike_trips = split_start_time(bike_trips)
 	bike_trips.show()
 
-# def process_yellow_taxi(spark):
-
+def process_yellow_taxi(spark):
+	path = 's3a://ny-taxi-trip-data/yellow_taxi/parquet/*'
+	taxi_trips = spark.read.parquet(path)
+	taxi_trips = split_start_time(taxi_trips)
+	taxi_trips.show()
 
 def process_green_taxi(spark):
 	path = 's3a://ny-taxi-trip-data/green_taxi/parquet/*'
 	taxi_trips = spark.read.parquet(path)
 	taxi_trips = split_start_time(taxi_trips)
+	taxi_trips = add_duration(taxi_trips)
 	taxi_trips.show()
+
 
 if __name__ == '__main__':
 	findspark.init("/usr/local/spark")

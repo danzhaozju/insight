@@ -2,6 +2,7 @@ import pyspark
 import pandas as pd
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
+from pyspark.sql.types import *
 
 
 def create_spark_session(app_name):
@@ -44,3 +45,13 @@ def split_start_time(df):
             .withColumn("day",dayofmonth("start_time"))\
             .withColumn("hour",hour("start_time"))
     return df
+
+def add_duration(df):
+    df = df.withColumn("duration", (col('end_time').cast(DoubleType())-col('start_time').cast(DoubleType()))/60)
+    return df
+
+
+
+
+
+
