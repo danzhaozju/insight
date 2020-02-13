@@ -24,13 +24,13 @@ def process_green_taxi(spark):
 	trips = add_geohash(trips, precision)
 
 	trips.createOrReplaceTempView('trips')
-	trips_from_station = spark.sql("SELECT S.station_name AS start_station, S.latitude, S.longitude,\
+	trips_from_station = spark.sql("SELECT station_name AS start_station, latitude, longitude,\
 		start_geohash, end_geohash, year, month, COUNT(*) AS green_count,\
 		AVG(passenger_count) AS green_avg_passengers,AVG(distance) AS green_avg_distance, \
 		AVG(total_amount) AS green_avg_cost, AVG(duration) AS green_avg_duration\
 		FROM trips AS T, stations AS S\
 		WHERE T.start_geohash = S.geohash\
-		GROUP BY start_geohash, end_geohash, year, month\
+		GROUP BY start_geohash, end_geohash, year, month, start_station, latitude, longitude\
 		ORDER BY green_count DESC")
 
 	# trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month, COUNT(*) AS green_count, \
