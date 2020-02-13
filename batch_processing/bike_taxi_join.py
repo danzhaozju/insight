@@ -33,7 +33,7 @@ def process_green_taxi(spark):
 	trips_p.show()
 	print(trips_p.count())
 
-	trips_p.createOrReplaceTempView("trips_p")
+	# trips_p.createOrReplaceTempView("trips_p")
 
 	# trips_from_station = spark.sql("SELECT S.station_name, T.*\
 	# 	FROM trips AS T, stations AS S\
@@ -53,7 +53,6 @@ if __name__ == '__main__':
 
 	precision = 6
 	geo_encoding = udf(lambda lat,lon: geohash2.encode(lat,lon,precision))
-	# spark.udf.register("geo_encoding", )
 	# spark.udf.register("geo_lat", lambda geo_string: geohash2.decode(geo_string)[0])
 	# spark.udf.register("geo_lon", lambda geo_string: geohash2.decode(geo_string)[1])
 
@@ -61,8 +60,8 @@ if __name__ == '__main__':
 	stations = create_df_from_csv_paths(spark, subway_station_path)
 	stations = stations.withColumn("geohash", geo_encoding(col('latitude'), col('longitude')))
 	stations.createOrReplaceTempView("stations")
-	stations.show(2)
-	print(stations.count())
+	# stations.show(2)
+	# print(stations.count())
 
 	# process_bike(spark)
 	# process_yellow_taxi(spark)
