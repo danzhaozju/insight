@@ -24,25 +24,28 @@ def process_green_taxi(spark):
 	trips = add_geohash(trips, precision)
 
 	trips.createOrReplaceTempView('trips')
-	trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month, COUNT(*) AS green_count, \
+	trips_from_station = spark.sql("SELECT S.station_name AS start_station, S.latitude, S.longitude,\
+		start_geohash, end_geohash, year, month, COUNT(*) AS green_count,\
 		AVG(passenger_count) AS green_avg_passengers,AVG(distance) AS green_avg_distance, \
 		AVG(total_amount) AS green_avg_cost, AVG(duration) AS green_avg_duration\
-		FROM trips\
+		FROM trips AS T, stations AS S\
+		WHERE T.start_geohash = S.geohash\
 		GROUP BY start_geohash, end_geohash, year, month\
 		ORDER BY green_count DESC")
 
-	trips_p.createOrReplaceTempView("trips_p")
-	trips_from_station = spark.sql("SELECT S.station_name AS start_station, S.latitude, S.longitude, T.*\
-		FROM trips_p AS T, stations AS S\
-		WHERE T.start_geohash = S.geohash")
+	# trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month, COUNT(*) AS green_count, \
+	# 	AVG(passenger_count) AS green_avg_passengers,AVG(distance) AS green_avg_distance, \
+	# 	AVG(total_amount) AS green_avg_cost, AVG(duration) AS green_avg_duration\
+	# 	FROM trips\
+	# 	GROUP BY start_geohash, end_geohash, year, month\
+	# 	ORDER BY green_count DESC")
+
+	# trips_p.createOrReplaceTempView("trips_p")
+	# trips_from_station = spark.sql("SELECT S.station_name AS start_station, S.latitude, S.longitude, T.*\
+	# 	FROM trips_p AS T, stations AS S\
+	# 	WHERE T.start_geohash = S.geohash")
 	trips_from_station.show()
 	print(trips_from_station.count())
-
-	# trips_from_station = spark.sql("SELECT S.station_name, T.*\
-	# 	FROM trips AS T, stations AS S\
-	# 	WHERE T.start_geohash = S.geohash")
-	# trips_from_station.show(2)
-	# print(trips_from_station.count())
 
 def add_geohash(df, precision=6):
     df = df.withColumn("start_geohash", geo_encoding(col('start_latitude'), col('start_longitude')))\
@@ -63,7 +66,7 @@ if __name__ == '__main__':
 	stations = create_df_from_csv_paths(spark, subway_station_path)
 	stations = stations.withColumn("geohash", geo_encoding(col('latitude'), col('longitude')))
 	stations.createOrReplaceTempView("stations")
-	
+
 	# process_bike(spark)
 	# process_yellow_taxi(spark)
 	process_green_taxi(spark)
