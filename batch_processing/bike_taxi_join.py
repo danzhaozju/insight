@@ -11,7 +11,8 @@ def process_bike(spark):
 	trips = add_geohash(trips, block_precision)
 
 	trips.createOrReplaceTempView('trips')
-	trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month, COUNT(*) AS count\
+	trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month,\
+			COUNT(*) AS count, AVG(duration) AS avg_duration\
 		FROM trips\
 		GROUP BY start_geohash, end_geohash, year, month\
 		ORDER BY count DESC")
@@ -21,6 +22,7 @@ def process_bike(spark):
 		WHERE T.start_geohash = S.geohash")
 	bike_from_station.show()
 	print(bike_from_station.count())
+
 	return bike_from_station
 
 def process_yellow_taxi(spark):
@@ -42,8 +44,8 @@ def process_taxi(spark, path):
 
 	trips.createOrReplaceTempView('trips')
 	trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month, COUNT(*) AS count,\
-		AVG(passenger_count) AS avg_passengers,AVG(distance) AS avg_distance,\
-		AVG(total_amount) AS avg_cost, AVG(duration) AS avg_duration\
+			AVG(passenger_count) AS avg_passengers,AVG(distance) AS avg_distance,\
+			AVG(total_amount) AS avg_cost, AVG(duration) AS avg_duration\
 		FROM trips\
 		GROUP BY start_geohash, end_geohash, year, month\
 		ORDER BY count DESC")
@@ -77,9 +79,9 @@ if __name__ == '__main__':
 	stations = stations.withColumn("geohash", geo_encoding(col('latitude'), col('longitude'), station_precision))
 	stations.createOrReplaceTempView("stations")
 
-	# process_bike(spark)
-	yellow = process_yellow_taxi(spark)
-	green = process_green_taxi(spark)
+	bike = process_bike(spark)
+	# yellow = process_yellow_taxi(spark)
+	# green = process_green_taxi(spark)
 
 
 
