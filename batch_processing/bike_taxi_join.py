@@ -15,14 +15,14 @@ def process_yellow_taxi(spark):
 	trips = spark.read.parquet(path)
 	trips = split_start_time(trips)
 	trips = add_duration(trips)
-	trips = add_geohash(trips, precision)
+	trips = add_geohash(trips)
 
 def process_green_taxi(spark):
 	path = 's3a://ny-taxi-trip-data/green_taxi/parquet/*'
 	trips = spark.read.parquet(path)
 	trips = split_start_time(trips)
 	trips = add_duration(trips)
-	trips = add_geohash(trips, precision)
+	trips = add_geohash(trips)
 
 	trips.createOrReplaceTempView('trips')
 	trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month, COUNT(*) AS green_count, \
