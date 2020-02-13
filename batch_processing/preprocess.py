@@ -118,8 +118,8 @@ if __name__ == '__main__':
 	taxi_locIDs.createOrReplaceTempView("loc_id")
 
 	preprocess_bike(spark)
-	preprocess_yellow_taxi(spark)
-	preprocess_green_taxi(spark)
+	# preprocess_yellow_taxi(spark)
+	# preprocess_green_taxi(spark)
 
 
 

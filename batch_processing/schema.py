@@ -4,17 +4,17 @@ from pyspark.sql.types import *
 Define the schema for .csv files of New York City citibike and taxi data
 """
 BIKE_SCHEMA = StructType([
-	StructField('duration', IntegerType(), True),
-	StructField('start_time', TimestampType(), True),
+	StructField('duration', IntegerType(), False),
+	StructField('start_time', TimestampType(), False),
 	StructField('end_time', TimestampType(), True),
 	StructField('start_stationID', IntegerType(), True),
 	StructField('start_station_name', StringType(), True),
-	StructField('start_latitude', DoubleType(), True),
-	StructField('start_longitude', DoubleType(), True),
+	StructField('start_latitude', DoubleType(), False),
+	StructField('start_longitude', DoubleType(), False),
 	StructField('end_stationID', IntegerType(), True),
 	StructField('end_station_name', StringType(), True),
-	StructField('end_latitude', DoubleType(), True),
-	StructField('end_longitude', DoubleType(), True),
+	StructField('end_latitude', DoubleType(), False),
+	StructField('end_longitude', DoubleType(), False),
 	StructField('bikeID', IntegerType(), True),
 	StructField('user_type', StringType(), True),
 	StructField('birth_year', StringType(), True),
