@@ -7,27 +7,28 @@ from util import *
 def process_bike(spark):
 	path = 's3a://citi-bike-trip-data/parquet/*'
 	trips = spark.read.parquet(path)
-	trips = split_start_time(trips)
-	trips = add_geohash(trips)
+	trips.show(1)
+	# trips = split_start_time(trips)
+	# trips = add_geohash(trips)
 
-	trips.createOrReplaceTempView('trips')
-	trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month,\
-			COUNT(*) AS count, AVG(duration) AS avg_duration\
-		FROM trips\
-		GROUP BY start_geohash, end_geohash, year, month\
-		ORDER BY count DESC")
-	print("trips_p:")
-	trips_p.show(1)
-	print(trips_p.count())
-	
-	trips_p.createOrReplaceTempView("trips_p")
-	bike_from_station = spark.sql("SELECT S.station_name AS start_station, S.latitude, S.longitude, T.*\
-		FROM trips_p AS T, stations AS S\
-		WHERE T.start_geohash = S.geohash")
-	bike_from_station.show()
-	print(bike_from_station.count())
+	# trips.createOrReplaceTempView('trips')
+	# trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month,\
+	# 		COUNT(*) AS count, AVG(duration) AS avg_duration\
+	# 	FROM trips\
+	# 	GROUP BY start_geohash, end_geohash, year, month\
+	# 	ORDER BY count DESC")
+	# print("trips_p:")
+	# trips_p.show(1)
+	# print(trips_p.count())
 
-	return bike_from_station
+	# trips_p.createOrReplaceTempView("trips_p")
+	# bike_from_station = spark.sql("SELECT S.station_name AS start_station, S.latitude, S.longitude, T.*\
+	# 	FROM trips_p AS T, stations AS S\
+	# 	WHERE T.start_geohash = S.geohash")
+	# bike_from_station.show()
+	# print(bike_from_station.count())
+
+	# return bike_from_station
 
 def process_yellow_taxi(spark):
 	path = 's3a://ny-taxi-trip-data/yellow_taxi/parquet/*'
