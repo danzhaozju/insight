@@ -8,7 +8,7 @@ def process_bike(spark):
 	path = 's3a://citi-bike-trip-data/parquet/preprocessed-citi-bike-trips-201308_201906'
 	trips = spark.read.parquet(path)
 	trips = split_start_time(trips)
-	trips = add_geohash(trips, block_precision)
+	trips = add_geohash(trips)
 
 	trips.createOrReplaceTempView('trips')
 	trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month,\
@@ -40,7 +40,7 @@ def process_taxi(spark, path):
 	trips = spark.read.parquet(path)
 	trips = split_start_time(trips)
 	trips = add_duration(trips)
-	trips = add_geohash(trips, block_precision)
+	trips = add_geohash(trips)
 
 	trips.createOrReplaceTempView('trips')
 	trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month, COUNT(*) AS count,\
@@ -59,9 +59,9 @@ def process_taxi(spark, path):
 	return trips_from_station
 
 
-def add_geohash(df, block_precision):
-    df = df.withColumn("start_geohash", geo_encoding(col('start_latitude'), col('start_longitude'), block_precision))\
-                .withColumn("end_geohash",geo_encoding(col('end_latitude'), col('end_longitude'), block_precision))
+def add_geohash(df):
+    df = df.withColumn("start_geohash", block_geo_encoding(col('start_latitude'), col('start_longitude')))\
+                .withColumn("end_geohash",block_geo_encoding(col('end_latitude'), col('end_longitude')))
     return df
 
 if __name__ == '__main__':
@@ -69,14 +69,16 @@ if __name__ == '__main__':
 	spark = create_spark_session('join_taxi_bike')
 
 	station_precision = 7
+	station_geo_encoding = udf(lambda lat, lon: geohash2.encode(lat,lon,station_precision))
 	block_precision = 6
-	geo_encoding = udf(lambda lat, lon, precision: geohash2.encode(lat,lon,precision))
+	block_geo_encoding = udf(lambda lat, lon: geohash2.encode(lat,lon,block_precision))
+
 	# spark.udf.register("geo_lat", lambda geo_string: geohash2.decode(geo_string)[0])
 	# spark.udf.register("geo_lon", lambda geo_string: geohash2.decode(geo_string)[1])
 
 	subway_station_path = 's3a://ny-taxi-trip-data/NY_subway_station_loc.csv'
 	stations = create_df_from_csv_paths(spark, subway_station_path)
-	stations = stations.withColumn("geohash", geo_encoding(col('latitude'), col('longitude'), station_precision))
+	stations = stations.withColumn("geohash", station_geo_encoding(col('latitude'), col('longitude')))
 	stations.createOrReplaceTempView("stations")
 
 	bike = process_bike(spark)
