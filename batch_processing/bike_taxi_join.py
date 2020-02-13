@@ -17,7 +17,7 @@ def process_bike(spark):
 		FROM trips\
 		GROUP BY start_geohash, end_geohash, year, month\
 		ORDER BY count DESC")
-	trips_p.show(1)
+	trips_p.show()
 	print(trips_p.count())
 
 	# trips_p.createOrReplaceTempView("trips_p")
