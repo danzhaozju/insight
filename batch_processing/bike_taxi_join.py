@@ -7,9 +7,9 @@ from util import *
 def process_bike(spark):
 	path = 's3a://citi-bike-trip-data/parquet/*'
 	trips = spark.read.parquet(path)
+	trips = split_start_time(trips)
+	trips = add_geohash(trips)
 	trips.show(1)
-	# trips = split_start_time(trips)
-	# trips = add_geohash(trips)
 
 	# trips.createOrReplaceTempView('trips')
 	# trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month,\
