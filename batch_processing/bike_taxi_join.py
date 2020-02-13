@@ -9,16 +9,19 @@ def process_bike(spark):
 	trips = spark.read.parquet(path)
 	trips = split_start_time(trips)
 	trips = add_geohash(trips)
-	trips.show(1)
-
+	
 	trips.createOrReplaceTempView('trips')
-	trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month,\
-			COUNT(*) AS count, AVG(duration) AS avg_duration\
+	temp = spark.sql("SELECT *\
 		FROM trips\
-		GROUP BY start_geohash, end_geohash, year, month\
-		ORDER BY count DESC")
-	trips_p.show()
-	print(trips_p.count())
+		WHERE start_geohash = 000000")
+	temp.show()
+	# trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month,\
+	# 		COUNT(*) AS count, AVG(duration)/60 AS avg_duration\
+	# 	FROM trips\
+	# 	GROUP BY start_geohash, end_geohash, year, month\
+	# 	ORDER BY count DESC")
+	# trips_p.show()
+	# print(trips_p.count())
 
 	# trips_p.createOrReplaceTempView("trips_p")
 	# bike_from_station = spark.sql("SELECT S.station_name AS start_station, S.latitude, S.longitude, T.*\
