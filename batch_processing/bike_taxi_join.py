@@ -30,10 +30,13 @@ def process_green_taxi(spark):
 		FROM trips\
 		GROUP BY start_geohash, end_geohash, year, month\
 		ORDER BY green_count DESC")
-	trips_p.show()
-	print(trips_p.count())
 
-	# trips_p.createOrReplaceTempView("trips_p")
+	trips_p.createOrReplaceTempView("trips_p")
+	trips_from_station = spark.sql("SELECT S.station_name AS start_station, S.latitude, S.longitude, T.*\
+		FROM trips_p AS T, stations AS S\
+		WHERE T.start_geohash = S.geohash")
+	trips_from_station.show()
+	print(trips_from_station.count())
 
 	# trips_from_station = spark.sql("SELECT S.station_name, T.*\
 	# 	FROM trips AS T, stations AS S\
@@ -60,9 +63,7 @@ if __name__ == '__main__':
 	stations = create_df_from_csv_paths(spark, subway_station_path)
 	stations = stations.withColumn("geohash", geo_encoding(col('latitude'), col('longitude')))
 	stations.createOrReplaceTempView("stations")
-	# stations.show(2)
-	# print(stations.count())
-
+	
 	# process_bike(spark)
 	# process_yellow_taxi(spark)
 	process_green_taxi(spark)
