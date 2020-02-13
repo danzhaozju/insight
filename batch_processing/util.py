@@ -42,14 +42,17 @@ def create_df_from_csv_paths(spark, paths, schema = None):
 
 def split_start_time(df):
     df = df.withColumn("year", year("start_time"))\
-            .withColumn("month",month("start_time"))\
-            .withColumn("day",dayofmonth("start_time"))\
-            .withColumn("hour",hour("start_time"))
+            .withColumn("month",month("start_time"))
+            # \
+            # .withColumn("day",dayofmonth("start_time"))\
+            # .withColumn("hour",hour("start_time"))
     return df
 
 def add_duration(df):
     df = df.withColumn("duration", (col('end_time').cast(DoubleType())-col('start_time').cast(DoubleType()))/60)
     return df
+
+
 
 
 
