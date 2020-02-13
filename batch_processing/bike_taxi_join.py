@@ -10,12 +10,7 @@ def process_bike(spark):
 	trips = split_start_time(trips)
 	trips = add_geohash(trips)
 
-	# trips.createOrReplaceTempView('trips')
-	# temp = spark.sql("SELECT *\
-	# 	FROM trips\
-	# 	WHERE start_geohash = 000000")
-	# temp.show()
-
+	trips.createOrReplaceTempView('trips')
 	trips_p = spark.sql("SELECT start_geohash, end_geohash, year, month,\
 			COUNT(*) AS count, AVG(duration)/60 AS avg_duration\
 		FROM trips\
