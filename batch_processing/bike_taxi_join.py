@@ -15,14 +15,14 @@ def process_bike(spark):
 			COUNT(*) AS count, AVG(duration)/60 AS avg_duration\
 		FROM trips\
 		WHERE start_latitude IS NOT NULL\
-		GROUP BY start_geohash, end_geohash, year, month\
-		ORDER BY count DESC")
+		GROUP BY start_geohash, end_geohash, year, month")
 	# trips_p.show()
 	# print(trips_p.count())
 	trips_p.createOrReplaceTempView("trips_p")
 	bike_from_station = spark.sql("SELECT S.station_name AS start_station, S.latitude, S.longitude, T.*\
 		FROM trips_p AS T, stations AS S\
-		WHERE T.start_geohash = S.geohash")
+		WHERE T.start_geohash = S.geohash\
+		ORDER BY year, month, count DESC")
 	# bike_from_station.show()
 	# print(bike_from_station.count())
 	return bike_from_station
