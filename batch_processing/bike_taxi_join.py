@@ -83,15 +83,15 @@ if __name__ == '__main__':
 	stations.createOrReplaceTempView("stations")
 
 	bike = process_bike(spark)
-	# yellow = process_yellow_taxi(spark)
-	# green = process_green_taxi(spark)
+	yellow = process_yellow_taxi(spark)
+	green = process_green_taxi(spark)
 
 	mode = "overwrite"
 	url = "jdbc:postgresql://10.0.0.11:5432/insight"
 	properties = {"user":"dan","password":"zhaodan","driver":"org.postgresql.Driver"}
 	bike.write.jdbc(url=url, table = "bike", mode=mode, properties=properties)
-	# yellow.write.jdbc(url=url, table = "yellow", mode=mode, properties=properties)
-	# green.write.jdbc(url=url, table = "green", mode=mode, properties=properties)
+	yellow.write.jdbc(url=url, table = "yellow", mode=mode, properties=properties)
+	green.write.jdbc(url=url, table = "green", mode=mode, properties=properties)
 
 
 
