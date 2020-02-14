@@ -90,7 +90,7 @@ if __name__ == '__main__':
 	mode = "overwrite"
 	url = "jdbc:postgresql://10.0.0.11:5432/insight"
 	properties = {"user":"dan","password":"zhaodan","driver":"org.postgresql.Driver"}
-	bike.jdbc(url=url, table = "bike", mode=mode, properties=properties)
+	bike.write.jdbc(url=url, table = "bike", mode=mode, properties=properties)
 
 
 
