@@ -17,16 +17,14 @@ def process_bike(spark):
 		WHERE start_latitude IS NOT NULL\
 		GROUP BY start_geohash, end_geohash, year, month\
 		ORDER BY count DESC")
-	trips_p.show()
-	print(trips_p.count())
-
+	# trips_p.show()
+	# print(trips_p.count())
 	trips_p.createOrReplaceTempView("trips_p")
 	bike_from_station = spark.sql("SELECT S.station_name AS start_station, S.latitude, S.longitude, T.*\
 		FROM trips_p AS T, stations AS S\
 		WHERE T.start_geohash = S.geohash")
-	bike_from_station.show()
-	print(bike_from_station.count())
-
+	# bike_from_station.show()
+	# print(bike_from_station.count())
 	return bike_from_station
 
 def process_yellow_taxi(spark):
@@ -89,6 +87,10 @@ if __name__ == '__main__':
 	# yellow = process_yellow_taxi(spark)
 	# green = process_green_taxi(spark)
 
+	mode = "overwrite"
+	url = "jdbc:postgresql://10.0.0.11:5432/insight"
+	properties = {"user":"dan","password":"zhaodan","driver":"org.postgresql.Driver"}
+	bike.jdbc(url=url, table = "bike", mode=mode, properties=properties)
 
 
 
