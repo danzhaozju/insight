@@ -22,7 +22,7 @@ def process_bike(spark):
 	bike_from_station = spark.sql("SELECT S.station_name AS start_station, S.latitude, S.longitude, T.*\
 		FROM trips_p AS T, stations AS S\
 		WHERE T.start_geohash = S.geohash\
-		ORDER BY year, month, count DESC")
+		ORDER BY year, month, start_station, count DESC")
 	# bike_from_station.show()
 	# print(bike_from_station.count())
 	return bike_from_station
