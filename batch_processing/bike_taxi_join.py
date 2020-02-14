@@ -36,7 +36,6 @@ def process_green_taxi(spark):
 	path = 's3a://ny-taxi-trip-data/green_taxi/parquet/*'
 	green_taxi_from_station = process_taxi(spark, path)
 	return green_taxi_from_station
-	# precision=6 3237174records
 
 def process_taxi(spark, path):
 	trips = spark.read.parquet(path)
@@ -49,15 +48,15 @@ def process_taxi(spark, path):
 			AVG(passenger_count) AS avg_passengers,AVG(distance) AS avg_distance,\
 			AVG(total_amount) AS avg_cost, AVG(duration) AS avg_duration\
 		FROM trips\
-		GROUP BY start_geohash, end_geohash, year, month\
-		ORDER BY count DESC")
+		WHERE start_latitude IS NOT NULL\
+		GROUP BY start_geohash, end_geohash, year, month")
 	trips_p.createOrReplaceTempView("trips_p")
 	trips_from_station = spark.sql("SELECT S.station_name AS start_station, S.latitude, S.longitude, T.*\
 		FROM trips_p AS T, stations AS S\
-		WHERE T.start_geohash = S.geohash")
-	trips_from_station.show()
-	print(trips_from_station.count())
-
+		WHERE T.start_geohash = S.geohash\
+		ORDER BY year, month, start_station, count DESC")
+	# trips_from_station.show()
+	# print(trips_from_station.count())
 	return trips_from_station
 
 
@@ -91,6 +90,8 @@ if __name__ == '__main__':
 	url = "jdbc:postgresql://10.0.0.11:5432/insight"
 	properties = {"user":"dan","password":"zhaodan","driver":"org.postgresql.Driver"}
 	bike.write.jdbc(url=url, table = "bike", mode=mode, properties=properties)
+	# yellow.write.jdbc(url=url, table = "yellow", mode=mode, properties=properties)
+	# green.write.jdbc(url=url, table = "green", mode=mode, properties=properties)
 
 
 
