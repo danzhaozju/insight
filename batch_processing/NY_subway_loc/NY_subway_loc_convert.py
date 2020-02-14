@@ -14,5 +14,8 @@ stations['longitude'] = stations['the_geom'].str.extract('(-\d+.\d+)',expand=Tru
 stations['latitude'] = stations['the_geom'].str.extract('\s(\d+.\d+)',expand=True)
 stations.drop(columns='the_geom', inplace=True)
 
+# If there are several station location records with the same station name, only keep the first one
+stations.drop_duplicates(subset=['station_name'], keep = "first", inplace = True)
+
 stations.to_csv('NY_subway_station_loc.csv',index = False, header = True)
 
