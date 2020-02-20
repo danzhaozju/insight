@@ -9,10 +9,10 @@ year_month_options = {}
 for year in years:
     if year == 2013:
         year_month_options[year] = list(range(8,13))
+    elif year in range(2014,2019):
+        year_month_options[year] = list(range(1,13))
     elif year == 2019:
         year_month_options[year] = list(range(1,7))
-    else:
-        year_month_options[year] = list(range(1,13))
 
 # Functions
 def generate_table(dataframe, max_rows=10):
