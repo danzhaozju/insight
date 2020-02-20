@@ -30,7 +30,7 @@ month_dict={ 1: "January",
 }
 
 # Subway station names
-subway_stations = pd.read_csv("/Users/apple/Desktop/Insight/Project/repo/batch_processing/NY_subway_loc/NY_subway_station_loc.csv")
+subway_stations = pd.read_csv("../batch_processing/NY_subway_loc/NY_subway_station_loc.csv")
 subway_stations_names = subway_stations['station_name'].unique()
 
 # Distance range
