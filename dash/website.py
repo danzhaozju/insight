@@ -3,6 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 # pip install psycopg2-binary
 import psycopg2
+import pandas as pd
 from dash.dependencies import Input, Output
 #from config import host, port, dbname, user, password
 
@@ -11,17 +12,12 @@ port = "5432"
 dbname = "insight"
 user = "dan"
 password = "zhaodan"
-conn = psycopg2.connect(dbname=dbname, user=user,password=password, host=host, port=port)
+conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 cur = conn.cursor()
 
-cur.execute("CREATE TABLE Persons\
-(\
-PersonID int,\
-LastName varchar(255),\
-FirstName varchar(255),\
-Address varchar(255),\
-City varchar(255)\
-);")
+print("start UI")
+
+bike = pd.read_sql_query("SELECT * FROM bike LIMIT 3;", conn)
 
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
