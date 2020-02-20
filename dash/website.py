@@ -15,7 +15,16 @@ password = "zhaodan"
 conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 cur = conn.cursor()
 
-print("start UI")
+def generate_table(dataframe, max_rows=10):
+    return html.Table(
+        # Header
+        [html.Tr([html.Th(col) for col in dataframe.columns])] +
+
+        # Body
+        [html.Tr([
+            html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
+        ]) for i in range(min(len(dataframe), max_rows))]
+    )
 
 bike = pd.read_sql_query("SELECT * FROM bike LIMIT 3;", conn)
 
@@ -31,6 +40,7 @@ app.layout = html.Div(children=[
     html.Div(children='''
         Dash: A web application framework for Python.
     '''),
+    generate_table(bike)
 ])
 
 if __name__ == '__main__':
