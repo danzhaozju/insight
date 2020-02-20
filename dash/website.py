@@ -1,6 +1,14 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+# pip install psycopg2-binary
+import psycopg2
+from dash.dependencies import Input, Output
+from config import host, port, dbname, user, password
+
+conn = psycopg2.connect(dbname=dbname, user=user,password=password host=host, port=port)
+
+
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
