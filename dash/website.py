@@ -9,11 +9,6 @@ from util import generate_table, year_month_options
 from config import host, port, dbname, user, password
 
 # Connect to PostgreSQL database
-host = "10.0.0.11"
-port = "5432"
-dbname = "insight"
-user = "dan"
-password = "zhaodan"
 conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 cur = conn.cursor()
 

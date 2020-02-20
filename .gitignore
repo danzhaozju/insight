@@ -2,4 +2,4 @@
 .ipynb_checkpoints
 .ipynb
 credentials.*
-config.py
+#config.py
