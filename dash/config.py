@@ -1,5 +1,0 @@
-host = "10.0.0.11"
-port = "5432"
-dbname = "insight"
-user = "dan"
-password = "zhaodan"
