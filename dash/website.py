@@ -35,7 +35,17 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
 app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
+	html.H1(
+        children = 'First & Last Mile',
+        style = {
+            'textAlign': 'center'
+        }
+    ),
+    html.H2(
+        children = 'Input:'
+    ),
+
+    html.Hr(),
 
     html.Div(children='''
         Dash: A web application framework for Python.
