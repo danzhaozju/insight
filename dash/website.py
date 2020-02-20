@@ -14,6 +14,15 @@ password = "zhaodan"
 conn = psycopg2.connect(dbname=dbname, user=user,password=password, host=host, port=port)
 cur = conn.cursor()
 
+cur.execute("CREATE TABLE Persons\
+(\
+PersonID int,\
+LastName varchar(255),\
+FirstName varchar(255),\
+Address varchar(255),\
+City varchar(255)\
+);")
+
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
