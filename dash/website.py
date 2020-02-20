@@ -5,7 +5,7 @@ import dash_html_components as html
 import psycopg2
 import pandas as pd
 from dash.dependencies import Input, Output
-from util import generate_table, year_month_options
+from util import generate_table, year_month_options, month_dict, subway_stations_names, distance_range
 from config import host, port, dbname, user, password
 
 # Connect to PostgreSQL database
@@ -14,7 +14,6 @@ cur = conn.cursor()
 
 # Create the dataframe bike
 bike = pd.read_sql_query("SELECT * FROM bike LIMIT 3;", conn)
-
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -35,7 +34,7 @@ app.layout = html.Div(children=[
 
     html.Div([
         html.Div([
-            html.H5('Year'),
+            html.Label('Year'),
             dcc.Dropdown(
                 id = 'year-dropdown',
                 options = [{'label':k, 'value':k} for k in year_month_options.keys()],
@@ -43,19 +42,42 @@ app.layout = html.Div(children=[
             ], className = "six columns"),
 
         html.Div([
-            html.H5('Month'),
+            html.Label('Month'),
             dcc.Dropdown(id='month-dropdown')
             ], className = "six columns")
         ]),
 
-    html.Div(id='display-selected-year-month')
+    html.Div([
+        html.Div([
+            html.Label('Subway Station'),
+            dcc.Dropdown(
+            id = 'station-dropdown',
+            options = [{'label':k, 'value':k} for k in subway_stations_names],
+            value = subway_stations_names[0])
+            ], className = "six columns"),
+
+        html.Div([
+            html.Label('Max Searching Distance'),
+            dcc.Dropdown(
+            id = 'distance-dropdown',
+            options = [{'label':k, 'value':k} for k in distance_range],
+            value = distance_range[0])
+            ], className = "six columns")
+        ]),
+
+    html.Hr(),
+
+    html.H5(id='display-selected-year-month', 
+        style = {
+            'textAlign': 'center'
+        })
 ])
 
 @app.callback(
     Output('month-dropdown', 'options'),
     [Input('year-dropdown', 'value')])
 def set_month_options(selected_year):
-    return [{'label': i, 'value': i} for i in year_month_options[selected_year]]
+    return [{'label': month_dict[i], 'value': i} for i in year_month_options[selected_year]]
 
 @app.callback(
     Output('month-dropdown', 'value'),
@@ -66,9 +88,12 @@ def set_month_value(available_options):
 @app.callback(
     Output('display-selected-year-month', 'children'),
     [Input('year-dropdown', 'value'),
-     Input('month-dropdown', 'value')])
-def set_display_children(selected_year, selected_month):
-    return 'You have selected the year ({}) and the month ({}).'.format(selected_year, selected_month)
+     Input('month-dropdown', 'value'),
+     Input('station-dropdown', 'value'),
+     Input('distance-dropdown', 'value')])
+def set_display_children(year, month, station, distance):
+    return 'Top 10 Destinations within {} Miles of {} Subway Station in {} {}:'\
+    .format(distance, station, month_dict[month], year)
 
 if __name__ == '__main__':
     app.run_server(host='0.0.0.0',debug=True)
