@@ -34,7 +34,7 @@ subway_stations = pd.read_csv("~/insight/batch_processing/NY_subway_loc/NY_subwa
 subway_stations_names = subway_stations['station_name'].unique()
 
 # Distance range
-distance_range = range(5,11)
+distance_range = range(1,11)
 
 # Functions
 def generate_table(dataframe, max_rows=10):
