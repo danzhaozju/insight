@@ -34,9 +34,6 @@ bike = pd.read_sql_query("\
     ORDER BY count DESC\
     LIMIT 20;", conn)
 
-conn.commit()
-conn.close()
-
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
@@ -123,3 +120,6 @@ def set_display_children(year, month, station, distance):
 
 if __name__ == '__main__':
     app.run_server(host='0.0.0.0',debug=True)
+
+    conn.commit()
+    conn.close()
