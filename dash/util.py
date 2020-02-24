@@ -37,7 +37,7 @@ subway_stations_names = subway_stations['station_name'].unique()
 distance_range = range(1,11)
 
 # Functions
-def generate_table(dataframe, max_rows=10):
+def generate_table(dataframe, max_rows=100):
     return html.Table(
         # Header
         [html.Tr([html.Th(col) for col in dataframe.columns])] +
