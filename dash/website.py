@@ -27,7 +27,7 @@ app.layout = html.Div(children=[
         }),
 
     html.H5(
-        children = 'Popular Origin & Destination Detection Platform',
+        children = 'Popular Origin & Destination Detection Platform(changed)',
         style = {
             'textAlign': 'center'
         }),
