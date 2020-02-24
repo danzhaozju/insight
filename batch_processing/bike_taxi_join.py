@@ -72,10 +72,10 @@ def add_start_end_points(df_name):
 		# cur.execute("UPDATE " + df_name + " SET start_point = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326);")
 		# cur.execute("ALTER TABLE " + df_name + " ADD COLUMN end_point geometry(POINT,4326);")
 		# cur.execute("UPDATE " + df_name + " SET end_point = ST_SetSRID(ST_PointFromGeoHash(end_geohash), 4326);")
-		cur.execute("ALTER TABLE BIKE ADD COLUMN end_longitude float;")
-		cur.execute("UPDATE bike SET end_longitude = ST_X(end_point);")
-		cur.execute("ALTER TABLE BIKE ADD COLUMN end_latitude float;")
-		cur.execute("UPDATE bike SET end_latitude = ST_Y(end_point);")
+		cur.execute("ALTER TABLE " + df_name + " ADD COLUMN end_longitude float;")
+		cur.execute("UPDATE " + df_name + " SET end_longitude = ST_X(end_point);")
+		cur.execute("ALTER TABLE " + df_name + " ADD COLUMN end_latitude float;")
+		cur.execute("UPDATE " + df_name + " SET end_latitude = ST_Y(end_point);")
 		conn.commit()
 
 if __name__ == '__main__':
@@ -113,7 +113,7 @@ if __name__ == '__main__':
 	conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 	cur = conn.cursor()
 
-	add_start_end_points("bike");
+	# add_start_end_points("bike");
 	add_start_end_points("yellow");
 	add_start_end_points("green");
 
