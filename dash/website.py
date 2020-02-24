@@ -7,6 +7,7 @@ import pandas as pd
 from dash.dependencies import Input, Output
 from util import generate_table, year_month_options, month_dict, subway_stations_names, distance_range
 from config import host, port, dbname, user, password
+from plotly import express as px
 
 # Connect to PostgreSQL database
 conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
@@ -26,6 +27,9 @@ bike = pd.read_sql_query("\
     AND avg_duration < 15\
     ORDER BY count DESC\
     LIMIT 50;", conn)
+
+px.set_mapbox_access_token(open(".mapbox_token").read())
+fig = px.scatter_mapbox(bike, lat = "end_latitude", lon = "end_longitude", color = "count", color_continuous_scale=px.colors.cyclical.IceFire, size_max=15, zoom=10)
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -83,6 +87,10 @@ app.layout = html.Div(children=[
         style = {
             'textAlign': 'center'
         }),
+
+    dcc.Graph(
+        id = "bike-map",
+        figure = fig)
 
     generate_table(bike),
     generate_table(yellow),
