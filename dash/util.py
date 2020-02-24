@@ -36,6 +36,9 @@ subway_stations_names = subway_stations['station_name'].unique()
 # Distance range
 distance_range = range(1,11)
 
+# Vehicles
+vehicles = {'bike':'Citi Bike', 'green':'Green Taxi', 'yellow':'Yellow taxi'}
+
 # Functions
 def generate_table(dataframe, max_rows=100):
     return html.Table(
@@ -46,3 +49,4 @@ def generate_table(dataframe, max_rows=100):
             html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
         ]) for i in range(min(len(dataframe), max_rows))]
     )
+

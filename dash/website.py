@@ -12,28 +12,30 @@ from plotly import express as px
 # Connect to PostgreSQL database
 conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 cur = conn.cursor()
-
-# Create the dataframe bike
-# bike = pd.read_sql_query("SELECT * FROM bike LIMIT 3;", conn)
-yellow = pd.read_sql_query("SELECT * FROM yellow LIMIT 3;", conn)
-green = pd.read_sql_query("SELECT * FROM green LIMIT 3;", conn)
-
-bike = pd.read_sql_query("\
-    SELECT * \
-    FROM bike \
-    WHERE year = 2013\
-    AND month = 8\
-    AND start_station = '6th Ave'\
-    AND avg_duration < 15\
-    ORDER BY count DESC\
-    LIMIT 50;", conn)
-
+# Get access to mapbox
 px.set_mapbox_access_token(open(".mapbox_token").read())
-df = px.data.carshare()
-fig = px.scatter_mapbox(df, lat="centroid_lat", lon="centroid_lon",     color="peak_hour", size="car_hours",
-                  color_continuous_scale=px.colors.cyclical.IceFire, size_max=15, zoom=10)
-# fig = px.scatter_mapbox(bike, lat = "end_latitude", lon = "end_longitude", color = "count", 
-#     color_continuous_scale=px.colors.cyclical.IceFire, size_max=15, zoom=10)
+
+def generate_trips(year, month, station, distance, vehicle):
+    trips = pd.read_sql_query("\
+        SELECT year, month, start_station, latitude, longitude, end_latitude, end_longitude, count, avg_distance\
+        FROM "+ vehicle +" \
+        WHERE year = "+ str(year) +"\
+        AND month = "+ str(month) +"\
+        AND start_station = '"+ station +"'\
+        AND avg_distance <= "+ str(distance) +"\
+        ORDER BY count DESC;", conn)
+    return trips
+
+def generate_map(trips):
+    fig = px.scatter_mapbox(trips, lat = "end_latitude", lon = "end_longitude", 
+                        color = "count", size = "count",
+                        size_max=15, zoom=11)
+    fig.update_layout(mapbox_style="open-street-map")
+    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+    return fig
+
+original_trips = generate_trips(2019, 1, 'Astor Pl', 1, 'bike')
+original_fig = generate_map(original_trips)
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -54,17 +56,25 @@ app.layout = html.Div(children=[
 
     html.Div([
         html.Div([
+            html.Label('Available Vehicles'),
+            dcc.Dropdown(
+                id = 'vehicle-dropdown',
+                options = [{'label':vehicles[k], 'value':k} for k in vehicles.keys()],
+                value = 'bike')
+            ], className = "six columns"),
+
+        html.Div([
             html.Label('Year'),
             dcc.Dropdown(
                 id = 'year-dropdown',
                 options = [{'label':k, 'value':k} for k in year_month_options.keys()],
                 value = 2019)
-            ], className = "six columns"),
+            ], className = "three columns"),
 
         html.Div([
             html.Label('Month'),
             dcc.Dropdown(id='month-dropdown')
-            ], className = "six columns")
+            ], className = "three columns")
         ]),
 
     html.Div([
@@ -85,7 +95,9 @@ app.layout = html.Div(children=[
             ], className = "six columns")
         ]),
 
-    html.Hr(),
+    html.Div([
+        html.Button('Submit', id='button', style = {'width': '30%'})
+        ], style={'textAlign':'center'}), 
 
     html.H5(id='display-selected-input', 
         style = {
@@ -93,14 +105,11 @@ app.layout = html.Div(children=[
         }),
 
     dcc.Graph(
-        id = "bike-map",
-        figure = fig),
+        id = "map",
+        figure = original_fig),
 
-    generate_table(bike),
-    generate_table(yellow),
-    generate_table(green)
-])
-
+    generate_table(original_trips)
+    ])
 @app.callback(
     Output('month-dropdown', 'options'),
     [Input('year-dropdown', 'value')])
@@ -118,10 +127,30 @@ def set_month_value(available_options):
     [Input('year-dropdown', 'value'),
      Input('month-dropdown', 'value'),
      Input('station-dropdown', 'value'),
-     Input('distance-dropdown', 'value')])
-def set_display_children(year, month, station, distance):
-    return 'Top 10 Destinations within {} Miles of {} Subway Station in {} {}:'\
-    .format(distance, station, month_dict[month], year)
+     Input('distance-dropdown', 'value'),
+     Input('vehicle-dropdown', 'value'),
+     Input('button', 'n_clicks')])
+def set_display_children(year, month, station, distance, vehicle, n_clicks):
+    if n_clicks is None:
+        raise PreventUpdate
+    else:
+        return 'Top 10 Destinations of {} Trips within {} Miles of {} Subway Station in {} {}:'\
+        .format(vehicles[vehicle], distance, station, month_dict[month], year)
+
+@app.callback(
+    Output('map', 'figure'),
+    [Input('year-dropdown', 'value'),
+     Input('month-dropdown', 'value'),
+     Input('station-dropdown', 'value'),
+     Input('distance-dropdown', 'value'),
+     Input('vehicle-dropdown', 'value'),
+     Input('button', 'n_clicks')])
+def set_map_display(year, month, station, distance, vehicle, n_clicks):
+    if n_clicks is None:
+        raise PreventUpdate
+    else:
+        trips = generate_trips(year, month, station, distance, vehicle)
+        return generate_map(trips)
 
 if __name__ == '__main__':
     app.run_server(host='0.0.0.0',debug=True)
