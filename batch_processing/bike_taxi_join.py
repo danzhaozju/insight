@@ -77,8 +77,8 @@ def add_start_end_points(df_name):
 	cur.execute("ALTER TABLE " + df_name + " ADD COLUMN end_latitude float;")
 	cur.execute("UPDATE " + df_name + " SET end_latitude = ST_Y(end_point);")
 	if df_name == "bike":
-		cur.execute("ALTER TABLE bike ADD COLUMN avg_distance float;")
-		cur.execute("UPDATE bike SET avg_distance = ST_Distance(start_point::geography, end_point::geography)/1609.344;")
+		cur.execute("ALTER TABLE " + df_name + " ADD COLUMN avg_distance float;")
+		cur.execute("UPDATE " + df_name + " SET avg_distance = ST_Distance(start_point::geography, end_point::geography)/1609.344;")
 	conn.commit()
 
 if __name__ == '__main__':
@@ -87,7 +87,7 @@ if __name__ == '__main__':
 
 	station_precision = 6
 	station_geo_encoding = udf(lambda lat, lon: geohash2.encode(lat,lon,station_precision))
-	block_precision = 6
+	block_precision = 7
 	block_geo_encoding = udf(lambda lat, lon: geohash2.encode(lat,lon,block_precision))
 
 	# geo_decoding_lat = udf(lambda geohash_string: geohash2.decode(geohash_string)[0])
@@ -105,17 +105,17 @@ if __name__ == '__main__':
 	mode = "overwrite"
 	url = "jdbc:postgresql://10.0.0.11:5432/insight"
 	properties = {"user":"dan","password":"zhaodan","driver":"org.postgresql.Driver"}
-	bike.write.jdbc(url=url, table = "bike", mode=mode, properties=properties)
-	yellow.write.jdbc(url=url, table = "yellow", mode=mode, properties=properties)
-	green.write.jdbc(url=url, table = "green", mode=mode, properties=properties)
+	bike.write.jdbc(url=url, table = "bike7", mode=mode, properties=properties)
+	yellow.write.jdbc(url=url, table = "yellow7", mode=mode, properties=properties)
+	green.write.jdbc(url=url, table = "green7", mode=mode, properties=properties)
 
 	# Connect to PostgreSQL database
 	conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 	cur = conn.cursor()
 
-	add_start_end_points("bike");
-	add_start_end_points("yellow");
-	add_start_end_points("green");
+	add_start_end_points("bike7");
+	add_start_end_points("yellow7");
+	add_start_end_points("green7");
 
 
 
