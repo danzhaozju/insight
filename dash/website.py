@@ -5,7 +5,7 @@ import dash_html_components as html
 import psycopg2
 import pandas as pd
 from dash.dependencies import Input, Output
-from util import generate_table, year_month_options, month_dict, subway_stations_names, distance_range
+from util import generate_table, year_month_options, month_dict, subway_stations_names, distance_range, vehicles
 from config import host, port, dbname, user, password
 from plotly import express as px
 
