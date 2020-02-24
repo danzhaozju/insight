@@ -102,15 +102,16 @@ if __name__ == '__main__':
 	conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 	cur = conn.cursor()
 
-	cur.execute("ALTER TABLE bike \
-		ADD COLUMN start_point geometry(POINT,4326);")
+	cur.execute("ALTER TABLE bike ADD COLUMN start_point geometry(POINT,4326);")
 	conn.commit()
-
 
 	cur.execute("UPDATE bike SET start_point = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326);")
 	conn.commit()
 
+	cur.execute("ALTER TABLE bike ADD COLUMN end_point point;")
+	conn.commit()
 
+	cur.execute("UPDATE bike SET end_point = ST_PointFromGeoHash(end_geohash);")
 
 
 
