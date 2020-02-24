@@ -27,7 +27,7 @@ app.layout = html.Div(children=[
         }),
 
     html.H5(
-        children = 'Popular Origin & Destination Detection Platform(changed)',
+        children = 'Popular Origin & Destination Detection Platform',
         style = {
             'textAlign': 'center'
         }),
@@ -67,10 +67,12 @@ app.layout = html.Div(children=[
 
     html.Hr(),
 
-    html.H5(id='display-selected-year-month', 
+    html.H5(id='display-selected-input', 
         style = {
             'textAlign': 'center'
-        })
+        }),
+
+    generate_table(bike)
 ])
 
 @app.callback(
@@ -86,7 +88,7 @@ def set_month_value(available_options):
     return available_options[0]['value']
 
 @app.callback(
-    Output('display-selected-year-month', 'children'),
+    Output('display-selected-input', 'children'),
     [Input('year-dropdown', 'value'),
      Input('month-dropdown', 'value'),
      Input('station-dropdown', 'value'),
