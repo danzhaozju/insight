@@ -14,6 +14,9 @@ cur = conn.cursor()
 
 # Create the dataframe bike
 bike = pd.read_sql_query("SELECT * FROM bike LIMIT 3;", conn)
+yelow = pd.read_sql_query("SELECT * FROM yellow LIMIT 3;", conn)
+green = pd.read_sql_query("SELECT * FROM green LIMIT 3;", conn)
+
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -72,7 +75,9 @@ app.layout = html.Div(children=[
             'textAlign': 'center'
         }),
 
-    generate_table(bike)
+    generate_table(bike),
+    generate_table(yellow),
+    generate_table(green)
 ])
 
 @app.callback(
