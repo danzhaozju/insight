@@ -12,6 +12,13 @@ from config import host, port, dbname, user, password
 conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 cur = conn.cursor()
 
+cur.execute('CREATE TABLE EMPLOYEE (\
+         FIRST_NAME  CHAR(20) NOT NULL,\
+         LAST_NAME  CHAR(20),\
+         AGE INT,  \
+         SEX CHAR(1),\
+         INCOME FLOAT )')
+
 # Create the dataframe bike
 # bike = pd.read_sql_query("SELECT * FROM bike LIMIT 3;", conn)
 yellow = pd.read_sql_query("SELECT * FROM yellow LIMIT 3;", conn)
