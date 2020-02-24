@@ -94,22 +94,22 @@ if __name__ == '__main__':
 	stations = stations.withColumn("geohash", station_geo_encoding(col('latitude'), col('longitude')))
 	stations.createOrReplaceTempView("stations")
 
-	# bike = process_bike(spark)
-	# yellow = process_yellow_taxi(spark)
-	# green = process_green_taxi(spark)
+	bike = process_bike(spark)
+	yellow = process_yellow_taxi(spark)
+	green = process_green_taxi(spark)
 
-	# mode = "overwrite"
-	# url = "jdbc:postgresql://10.0.0.11:5432/insight"
-	# properties = {"user":"dan","password":"zhaodan","driver":"org.postgresql.Driver"}
-	# bike.write.jdbc(url=url, table = "bike", mode=mode, properties=properties)
-	# yellow.write.jdbc(url=url, table = "yellow", mode=mode, properties=properties)
-	# green.write.jdbc(url=url, table = "green", mode=mode, properties=properties)
+	mode = "overwrite"
+	url = "jdbc:postgresql://10.0.0.11:5432/insight"
+	properties = {"user":"dan","password":"zhaodan","driver":"org.postgresql.Driver"}
+	bike.write.jdbc(url=url, table = "bike", mode=mode, properties=properties)
+	yellow.write.jdbc(url=url, table = "yellow", mode=mode, properties=properties)
+	green.write.jdbc(url=url, table = "green", mode=mode, properties=properties)
 
 	# Connect to PostgreSQL database
 	conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 	cur = conn.cursor()
 
-	# add_start_end_points("bike");
+	add_start_end_points("bike");
 	add_start_end_points("yellow");
 	add_start_end_points("green");
 
