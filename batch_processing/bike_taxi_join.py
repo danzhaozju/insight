@@ -68,10 +68,10 @@ def add_geohash(df):
     return df
 
 def add_start_end_points(df_name):
-		# cur.execute("ALTER TABLE " + df_name + " ADD COLUMN start_point geometry(POINT,4326);")
-		# cur.execute("UPDATE " + df_name + " SET start_point = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326);")
-		# cur.execute("ALTER TABLE " + df_name + " ADD COLUMN end_point geometry(POINT,4326);")
-		# cur.execute("UPDATE " + df_name + " SET end_point = ST_SetSRID(ST_PointFromGeoHash(end_geohash), 4326);")
+		cur.execute("ALTER TABLE " + df_name + " ADD COLUMN start_point geometry(POINT,4326);")
+		cur.execute("UPDATE " + df_name + " SET start_point = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326);")
+		cur.execute("ALTER TABLE " + df_name + " ADD COLUMN end_point geometry(POINT,4326);")
+		cur.execute("UPDATE " + df_name + " SET end_point = ST_SetSRID(ST_PointFromGeoHash(end_geohash), 4326);")
 		cur.execute("ALTER TABLE " + df_name + " ADD COLUMN end_longitude float;")
 		cur.execute("UPDATE " + df_name + " SET end_longitude = ST_X(end_point);")
 		cur.execute("ALTER TABLE " + df_name + " ADD COLUMN end_latitude float;")
@@ -87,33 +87,30 @@ if __name__ == '__main__':
 	block_precision = 6
 	block_geo_encoding = udf(lambda lat, lon: geohash2.encode(lat,lon,block_precision))
 
-	geo_decoding_lat = udf(lambda geohash_string: geohash2.decode(geohash_string)[0])
-	geo_decoding_lon = udf(lambda geohash_string: geohash2.decode(geohash_string)[0])
+	# geo_decoding_lat = udf(lambda geohash_string: geohash2.decode(geohash_string)[0])
+	# geo_decoding_lon = udf(lambda geohash_string: geohash2.decode(geohash_string)[1])
 
-	# spark.udf.register("geo_lat", lambda geo_string: geohash2.decode(geo_string)[0])
-	# spark.udf.register("geo_lon", lambda geo_string: geohash2.decode(geo_string)[1])
+	subway_station_path = 's3a://ny-taxi-trip-data/NY_subway_station_loc.csv'
+	stations = create_df_from_csv_paths(spark, subway_station_path)
+	stations = stations.withColumn("geohash", station_geo_encoding(col('latitude'), col('longitude')))
+	stations.createOrReplaceTempView("stations")
 
-	# subway_station_path = 's3a://ny-taxi-trip-data/NY_subway_station_loc.csv'
-	# stations = create_df_from_csv_paths(spark, subway_station_path)
-	# stations = stations.withColumn("geohash", station_geo_encoding(col('latitude'), col('longitude')))
-	# stations.createOrReplaceTempView("stations")
+	bike = process_bike(spark)
+	yellow = process_yellow_taxi(spark)
+	green = process_green_taxi(spark)
 
-	# bike = process_bike(spark)
-	# yellow = process_yellow_taxi(spark)
-	# green = process_green_taxi(spark)
-
-	# mode = "overwrite"
-	# url = "jdbc:postgresql://10.0.0.11:5432/insight"
-	# properties = {"user":"dan","password":"zhaodan","driver":"org.postgresql.Driver"}
-	# bike.write.jdbc(url=url, table = "bike", mode=mode, properties=properties)
-	# yellow.write.jdbc(url=url, table = "yellow", mode=mode, properties=properties)
-	# green.write.jdbc(url=url, table = "green", mode=mode, properties=properties)
+	mode = "overwrite"
+	url = "jdbc:postgresql://10.0.0.11:5432/insight"
+	properties = {"user":"dan","password":"zhaodan","driver":"org.postgresql.Driver"}
+	bike.write.jdbc(url=url, table = "bike", mode=mode, properties=properties)
+	yellow.write.jdbc(url=url, table = "yellow", mode=mode, properties=properties)
+	green.write.jdbc(url=url, table = "green", mode=mode, properties=properties)
 
 	# Connect to PostgreSQL database
 	conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 	cur = conn.cursor()
 
-	# add_start_end_points("bike");
+	add_start_end_points("bike");
 	add_start_end_points("yellow");
 	add_start_end_points("green");
 
