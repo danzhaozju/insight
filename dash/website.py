@@ -18,6 +18,8 @@ cur.execute('CREATE TABLE EMPLOYEE (\
          AGE INT,  \
          SEX CHAR(1),\
          INCOME FLOAT )')
+conn.commit()
+# conn.close()
 
 # Create the dataframe bike
 # bike = pd.read_sql_query("SELECT * FROM bike LIMIT 3;", conn)
@@ -120,6 +122,3 @@ def set_display_children(year, month, station, distance):
 
 if __name__ == '__main__':
     app.run_server(host='0.0.0.0',debug=True)
-
-    conn.commit()
-    conn.close()
