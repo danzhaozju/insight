@@ -29,7 +29,11 @@ bike = pd.read_sql_query("\
     LIMIT 50;", conn)
 
 px.set_mapbox_access_token(open(".mapbox_token").read())
-fig = px.scatter_mapbox(bike, lat = "end_latitude", lon = "end_longitude", color = "count", color_continuous_scale=px.colors.cyclical.IceFire, size_max=15, zoom=10)
+df = px.data.carshare()
+fig = px.scatter_mapbox(df, lat="centroid_lat", lon="centroid_lon",     color="peak_hour", size="car_hours",
+                  color_continuous_scale=px.colors.cyclical.IceFire, size_max=15, zoom=10)
+# fig = px.scatter_mapbox(bike, lat = "end_latitude", lon = "end_longitude", color = "count", 
+#     color_continuous_scale=px.colors.cyclical.IceFire, size_max=15, zoom=10)
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
