@@ -14,7 +14,7 @@ cur = conn.cursor()
 
 # Create the dataframe bike
 bike = pd.read_sql_query("SELECT * FROM bike LIMIT 3;", conn)
-yelow = pd.read_sql_query("SELECT * FROM yellow LIMIT 3;", conn)
+yellow = pd.read_sql_query("SELECT * FROM yellow LIMIT 3;", conn)
 green = pd.read_sql_query("SELECT * FROM green LIMIT 3;", conn)
 
 
