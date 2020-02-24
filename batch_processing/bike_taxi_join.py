@@ -74,6 +74,8 @@ if __name__ == '__main__':
 	block_precision = 6
 	block_geo_encoding = udf(lambda lat, lon: geohash2.encode(lat,lon,block_precision))
 
+	geo_decoding = udf(lambda geohash_string: geohash2.decode(geohash_string)[0])
+
 	# spark.udf.register("geo_lat", lambda geo_string: geohash2.decode(geo_string)[0])
 	# spark.udf.register("geo_lon", lambda geo_string: geohash2.decode(geo_string)[1])
 

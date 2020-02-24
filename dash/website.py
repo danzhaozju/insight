@@ -13,9 +13,19 @@ conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, 
 cur = conn.cursor()
 
 # Create the dataframe bike
-bike = pd.read_sql_query("SELECT * FROM bike LIMIT 3;", conn)
+# bike = pd.read_sql_query("SELECT * FROM bike LIMIT 3;", conn)
 yellow = pd.read_sql_query("SELECT * FROM yellow LIMIT 3;", conn)
 green = pd.read_sql_query("SELECT * FROM green LIMIT 3;", conn)
+
+bike = pd.read_sql_query("\
+    SELECT * \
+    FROM bike \
+    WHERE year = 2013\
+    AND month = 8\
+    AND start_station = '6th Ave'\
+    AND avg_duration < 15\
+    ORDER BY count DESC\
+    LIMIT 20;", conn)
 
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
