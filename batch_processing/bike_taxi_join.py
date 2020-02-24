@@ -67,6 +67,13 @@ def add_geohash(df):
                 .withColumn("end_geohash",block_geo_encoding(col('end_latitude'), col('end_longitude')))
     return df
 
+def add_start_end_points(df_name):
+		cur.execute("ALTER TABLE " + df_name + " ADD COLUMN start_point geometry(POINT,4326);")
+		cur.execute("UPDATE " + df_name + " SET start_point = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326);")
+		cur.execute("ALTER TABLE " + df_name + " ADD COLUMN end_point geometry(POINT,4326);")
+		cur.execute("UPDATE " + df_name + " SET end_point = ST_SetSRID(ST_PointFromGeoHash(end_geohash), 4326);")
+		conn.commit()
+
 if __name__ == '__main__':
 	findspark.init("/usr/local/spark")
 	spark = create_spark_session('join_taxi_bike')
@@ -102,16 +109,10 @@ if __name__ == '__main__':
 	conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 	cur = conn.cursor()
 
-	cur.execute("ALTER TABLE bike ADD COLUMN start_point geometry(POINT,4326);")
-	conn.commit()
+	# add_start_end_points("bike");
+	add_start_end_points("yellow");
+	add_start_end_points("green");
 
-	cur.execute("UPDATE bike SET start_point = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326);")
-	conn.commit()
-
-	cur.execute("ALTER TABLE bike ADD COLUMN end_point point;")
-	conn.commit()
-
-	cur.execute("UPDATE bike SET end_point = ST_PointFromGeoHash(end_geohash);")
 
 
 
