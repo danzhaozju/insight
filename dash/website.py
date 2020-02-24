@@ -12,14 +12,6 @@ from config import host, port, dbname, user, password
 conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 cur = conn.cursor()
 
-cur.execute('CREATE TABLE EMPLOYEE (\
-         FIRST_NAME  CHAR(20) NOT NULL,\
-         LAST_NAME  CHAR(20),\
-         AGE INT,  \
-         SEX CHAR(1),\
-         INCOME FLOAT )')
-conn.commit()
-
 # Create the dataframe bike
 # bike = pd.read_sql_query("SELECT * FROM bike LIMIT 3;", conn)
 yellow = pd.read_sql_query("SELECT * FROM yellow LIMIT 3;", conn)
@@ -33,7 +25,7 @@ bike = pd.read_sql_query("\
     AND start_station = '6th Ave'\
     AND avg_duration < 15\
     ORDER BY count DESC\
-    LIMIT 20;", conn)
+    LIMIT 50;", conn)
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
