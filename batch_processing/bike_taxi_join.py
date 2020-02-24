@@ -1,8 +1,10 @@
 import findspark
 import pyspark
 import geohash2
+import psycopg2
 from pyspark.sql.functions import *
 from util import *
+from config import host, port, dbname, user, password
 
 def process_bike(spark):
 	path = 's3a://citi-bike-trip-data/parquet/*'
@@ -74,7 +76,8 @@ if __name__ == '__main__':
 	block_precision = 6
 	block_geo_encoding = udf(lambda lat, lon: geohash2.encode(lat,lon,block_precision))
 
-	geo_decoding = udf(lambda geohash_string: geohash2.decode(geohash_string)[0])
+	geo_decoding_lat = udf(lambda geohash_string: geohash2.decode(geohash_string)[0])
+	geo_decoding_lon = udf(lambda geohash_string: geohash2.decode(geohash_string)[0])
 
 	# spark.udf.register("geo_lat", lambda geo_string: geohash2.decode(geo_string)[0])
 	# spark.udf.register("geo_lon", lambda geo_string: geohash2.decode(geo_string)[1])
@@ -84,16 +87,28 @@ if __name__ == '__main__':
 	stations = stations.withColumn("geohash", station_geo_encoding(col('latitude'), col('longitude')))
 	stations.createOrReplaceTempView("stations")
 
-	bike = process_bike(spark)
-	yellow = process_yellow_taxi(spark)
-	green = process_green_taxi(spark)
+	# bike = process_bike(spark)
+	# yellow = process_yellow_taxi(spark)
+	# green = process_green_taxi(spark)
 
-	mode = "overwrite"
-	url = "jdbc:postgresql://10.0.0.11:5432/insight"
-	properties = {"user":"dan","password":"zhaodan","driver":"org.postgresql.Driver"}
-	bike.write.jdbc(url=url, table = "bike", mode=mode, properties=properties)
-	yellow.write.jdbc(url=url, table = "yellow", mode=mode, properties=properties)
-	green.write.jdbc(url=url, table = "green", mode=mode, properties=properties)
+	# mode = "overwrite"
+	# url = "jdbc:postgresql://10.0.0.11:5432/insight"
+	# properties = {"user":"dan","password":"zhaodan","driver":"org.postgresql.Driver"}
+	# bike.write.jdbc(url=url, table = "bike", mode=mode, properties=properties)
+	# yellow.write.jdbc(url=url, table = "yellow", mode=mode, properties=properties)
+	# green.write.jdbc(url=url, table = "green", mode=mode, properties=properties)
+
+	# Connect to PostgreSQL database
+	conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
+	cur = conn.cursor()
+
+	cur.execute("ALTER TABLE bike \
+		ADD COLUMN start_point geometry(POINT,4326);")
+	conn.commit()
+
+
+	cur.execute("UPDATE bike SET start_point = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326);")
+	conn.commit()
 
 
 

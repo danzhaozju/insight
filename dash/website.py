@@ -19,7 +19,6 @@ cur.execute('CREATE TABLE EMPLOYEE (\
          SEX CHAR(1),\
          INCOME FLOAT )')
 conn.commit()
-# conn.close()
 
 # Create the dataframe bike
 # bike = pd.read_sql_query("SELECT * FROM bike LIMIT 3;", conn)
