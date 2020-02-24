@@ -90,7 +90,7 @@ app.layout = html.Div(children=[
 
     dcc.Graph(
         id = "bike-map",
-        figure = fig)
+        figure = fig),
 
     generate_table(bike),
     generate_table(yellow),
