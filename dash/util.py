@@ -34,19 +34,18 @@ subway_stations = pd.read_csv("../batch_processing/NY_subway_loc/NY_subway_stati
 subway_stations_names = subway_stations['station_name'].unique()
 
 # Distance range
-distance_range = range(1,11)
+distance_range = range(1,21)
 
 # Vehicles
 vehicles = {'bike':'Citi Bike', 'green':'Green Taxi', 'yellow':'Yellow taxi'}
 
 # Functions
 def generate_table(dataframe, max_rows=100):
-    return html.Table(
-        # Header
-        [html.Tr([html.Th(col) for col in dataframe.columns])] +
-        # Body
-        [html.Tr([
-            html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
-        ]) for i in range(min(len(dataframe), max_rows))]
-    )
+  return html.Table(
+    # Header
+    [html.Tr([html.Th(col) for col in dataframe.columns])] +
+    # Body
+    [html.Tr([
+      html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
+      ]) for i in range(min(len(dataframe), max_rows))])
 

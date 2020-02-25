@@ -4,6 +4,7 @@ import dash_html_components as html
 # pip install psycopg2-binary
 import psycopg2
 import pandas as pd
+import dash_table
 from dash.dependencies import Input, Output
 from util import generate_table, year_month_options, month_dict, subway_stations_names, distance_range, vehicles
 from config import host, port, dbname, user, password
