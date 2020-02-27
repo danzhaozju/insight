@@ -16,6 +16,9 @@ For people who use public transportation, when they get off the subway or bus, h
 
 First&LastMile is designed to detect the most popular destinations from/to each transportation hub at different times of the day by analyzing the taxi and bike sharing data.
 
+## Demo
+[![Watch the video](https://img.youtube.com/vi/dXOAvuUGqCw/maxresdefault.jpg)](https://www.youtube.com/watch?v=dXOAvuUGqCw)
+
 ## Data
 #### 1. New York Yellow and Green Taxi Trip Records([Link](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)):  
 Green taxi: 10GB, 2013.08-2019.06  
