@@ -17,6 +17,12 @@ For people who use public transportation, when they get off the subway or bus, h
 First&LastMile is designed to detect the most popular destinations from/to each transportation hub at different times of the day by analyzing the taxi and bike sharing data.
 
 ## Demo
+This project visualize the aggregated results on the map through Dash.
+
+Users can input origin/destination, year, month, vehicle, subway station, max searching distance and click the submit button. Then the plarform will output a map showing the top popular areas within the max searching distance of the subway station along with a table of detailed information of the areas.
+
+Please watch the demo video below:
+
 [![Watch the video](https://img.youtube.com/vi/dXOAvuUGqCw/maxresdefault.jpg)](https://www.youtube.com/watch?v=dXOAvuUGqCw)
 
 ## Data
