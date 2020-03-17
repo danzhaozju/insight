@@ -3,6 +3,8 @@ A Plarform for Popular Origin & Destination Detection
 
 [Demo slides](http://bit.ly/dan-demo) | [UI](http://bit.ly/dan_ui_demo) | [Presentation](http://bit.ly/dan_presentation)
 
+[![Watch the video](https://img.youtube.com/vi/6769_DPW3fk/maxresdefault.jpg)](https://www.youtube.com/watch?v=6769_DPW3fk)
+
 This project is designed and completed by Dan Zhao, a Fellow of the Insight Data Engineering program (Silicon Valley, 2020A).
 
 ## Overview
@@ -53,6 +55,7 @@ UI: 1
 *Problems:*  
 1. Trip files uploaded monthly with different schema
 2. Some have LocationID as location information while others have longitude & latitude.
+![Image description](images/header_lines.png)
 
 *Solutions:*  
 1. Define a schema for ingesting
@@ -80,5 +83,9 @@ UI: 1
 2. use taxi location id (Too big area -- not chosen)
 3. use K-means algorithm to aggregate locations to 100 blocks(for example) (High latency -- not chosen)
 4. **GeoHash** (chosen!)
+![Image description](images/geohash.png)
+
+## About Dan Zhao
+![Image description](images/about_me.png)
 
 
