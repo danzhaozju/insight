@@ -1,11 +1,13 @@
 # First & Last Mile
 A Plarform for Popular Origin & Destination Detection
 
+This project is designed and completed by Dan Zhao, a Fellow of the Insight Data Engineering program (Silicon Valley, 2020A).
+
 [Demo slides](http://bit.ly/dan-demo) | [UI](http://bit.ly/dan_ui_demo) | [Presentation](http://bit.ly/dan_presentation)
 
-[![Watch the video](https://img.youtube.com/vi/6769_DPW3fk/maxresdefault.jpg)](https://www.youtube.com/watch?v=6769_DPW3fk)
+Please click and watch the presentation video below:
 
-This project is designed and completed by Dan Zhao, a Fellow of the Insight Data Engineering program (Silicon Valley, 2020A).
+[![Watch the video](https://img.youtube.com/vi/6769_DPW3fk/maxresdefault.jpg)](https://www.youtube.com/watch?v=6769_DPW3fk)
 
 ## Overview
 What is the "First & Last Mile"? 
@@ -23,7 +25,7 @@ This project visualize the aggregated results on the map through Dash.
 
 Users can input origin/destination, year, month, vehicle, subway station, max searching distance and click the submit button. Then the plarform will output a map showing the top popular areas within the max searching distance of the subway station along with a table of detailed information of the areas.
 
-Please watch the demo video below:
+Please click and watch the demo video below:
 
 [![Watch the video](https://img.youtube.com/vi/dXOAvuUGqCw/maxresdefault.jpg)](https://www.youtube.com/watch?v=dXOAvuUGqCw)
 
