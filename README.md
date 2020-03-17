@@ -3,7 +3,7 @@ A Plarform for Popular Origin & Destination Detection
 
 This project is designed and completed by Dan Zhao, a Fellow of the Insight Data Engineering program (Silicon Valley, 2020A).
 
-[Demo slides](http://bit.ly/dan-demo) | [UI](http://bit.ly/dan_ui_demo) | [Presentation](http://bit.ly/dan_presentation)
+[Demo slides](http://bit.ly/dan-demo) | [UI](http://bit.ly/dan_dash) | [Presentation](http://bit.ly/dan_presentation)
 
 Please click and watch the presentation video below:
 
