@@ -40,7 +40,7 @@ Trip Duration (seconds), Start Time and Date, Stop Time and Date, Start Station 
 ## Pipeline
 The raw data of New York taxi and citi bike data are downloaded and stored to s3. Geocoding work is done by Python. The raw data is preprocessed by Spark and stored back to s3 in Parquet format to save storage and improve performance. Then the data is ingested and processed by Spark. The aggregated results are stored in PostGIS, which has some convenient geo functions. Finally, Flask is used to build a information query UI.
 
-![Image description](images/pipeline.png)
+![Image description](images/new_pipeline.png)
 
 ## Cluster Structure
 6 m5.xlarge AWS EC2 instances are needed to be launched for reproducing the environment:  
